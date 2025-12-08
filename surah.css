@@ -1,0 +1,576 @@
+/* General Body and Layout Styles (unchanged) */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  background: #d2d0d0;
+}
+
+/* Sticky Header/Title Section (unchanged) */
+.ttt {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: rgb(243, 243, 243);
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  line-height: 1.5;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ttt h1 {
+  color: #004d40;
+  text-align: center;
+  margin-bottom: 0; 
+  font-size: 24px;
+}
+
+.info {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+/* Sidebar Styling (unchanged) */
+.sidebar {
+  width: 260px;
+  background: #dcdcdc;
+  border-right: 2px solid #004d40;
+  height: 100vh;
+  padding: 20px;
+  overflow-y: auto;
+  position: fixed;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar h2 {
+  text-align: center;
+  color: #004d40;
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: #004d40;
+  padding: 10px;
+  margin: 8px 0;
+  border: 2px solid #004d40;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.sidebar a:hover {
+  background: #004d40;
+  color: white;
+  transform: scale(1.05);
+}
+
+.sidebar a.active {
+  background: #004d40;
+  color: white;
+  border-color: #002d24;
+}
+
+/* Main Content Area (unchanged) */
+.content {
+  margin-left: 280px;
+  padding: 30px;
+  flex: 1;
+}
+
+.content h1 {
+  color: #004d40;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Ayat Box Styling (unchanged) */
+.ayat {
+  background: rgb(243, 243, 243);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  line-height: 1.8;
+  position: relative;
+}
+
+.ayat strong {
+  color: #004d40;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.arabic {
+  font-size: 30px;
+  text-align: center;
+  color: #222;
+  margin-bottom: 8px;
+  direction: ltr;
+  unicode-bidi: plaintext;
+}
+
+.translation {
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+}
+
+/* Transliteration Button and Text (unchanged) */
+.transliteration-btn {
+  background-color: #004d40;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  float: right;
+  margin-top: -5px;
+}
+
+.transliteration-btn:hover {
+  background-color: #00332a;
+}
+
+/* Transliteration (উচ্চারণ) - ডিফল্টভাবে লুকানো থাকবে */
+.transliteration {
+  display: none;
+  margin-top: 10px;
+  background: #e2e3e3;
+  padding: 15px;
+  border-radius: 6px;
+  color: #222;
+  font-size: 15px;
+  line-height: 1.6;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
+  clear: both;
+}
+
+/* Tafsir (দৃশ্যমান থাকবে) */
+.tafsir {
+  display: block;
+  margin-top: 10px;
+  background: #eaf5f3;
+  padding: 15px;
+  border-radius: 6px;
+  color: #222;
+  font-size: 18px;
+  line-height: 1.6;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Home Button (unchanged) */
+.home-btn {
+  background-color: #004d40;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.settings-btn {
+  background-color: #004d40;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.settings-btn:hover, .home-btn:hover {
+  background-color: #00332a;
+}
+
+/* Font Sizer Box (unchanged) */
+#font-sizer {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #dcdcdc;
+  border: 2px solid #004d40;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex-direction: column;
+  gap: 10px;
+}
+
+#font-sizer.font-sizer-visible {
+  display: flex;
+}
+
+#font-sizer button {
+  background-color: #004d40;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#font-sizer button:hover {
+  background-color: #00332a;
+}
+
+/* Settings container for desktop (unchanged) */
+.settings-container {
+  position: relative;
+  z-index: 999;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ttt-left-buttons {
+  display: none;
+}
+
+.ttt-info-center {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.nnn {
+  display: none;
+}
+
+/* Mobile Responsiveness (unchanged) */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    left: -280px;
+    transition: left 0.3s ease;
+    height: 100%;
+    top: 0;
+    width: 260px;
+    z-index: 1000;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+    padding-top: 70px;
+  }
+
+  .ttt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #004d40;
+    color: white;
+    padding: 10px;
+    z-index: 998;
+    border-radius: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 0; 
+  }
+
+  .ttt h1 {
+    font-size: 18px;
+    margin: 0;
+    color: white;
+  }
+
+  .ttt .info {
+    display: none;
+  }
+
+  .ttt-info-center {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .ttt-left-buttons {
+    display: block;
+  }
+
+  .menu-btn {
+    display: block;
+    position: static;
+    font-size: 12px;
+    background: #004d40;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .settings-container {
+    display: flex;
+    gap: 5px;
+    position: static;
+  }
+
+  .home-btn {
+    font-size: 12px;
+    display: block;
+    padding: 6px 10px;
+  }
+
+  .settings-btn {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  #font-sizer {
+    top: 45px;
+    right: 5px;
+    flex-direction: row;
+  }
+.nnn{
+  display: block;
+  text-align: center;
+}
+
+}
+
+/* 🌿 সূরা ভূমিকা অংশের ডিজাইন */
+
+/* মূল কন্টেইনার */
+.surah-intro {
+  background: #f9fdf9; /* হালকা সবুজাভ ব্যাকগ্রাউন্ড */
+  border: 1px solid #d8ecd8;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 25px 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* Hover করলে সামান্য উজ্জ্বল হবে */
+.surah-intro:hover {
+  box-shadow: 0 5px 15px rgba(0, 128, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* শিরোনাম অংশ */
+.surah-intro h2 {
+  color: #136f3e;
+  border-bottom: 2px solid #c2e0c2;
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+  font-family: "Noto Sans Bengali", "SolaimanLipi", sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+/* ভূমিকা বাটন */
+.intro-toggle {
+  width: 100%;
+  text-align: center;
+  background-color: #004d40;
+  color: white;
+  font-size: 1.4em;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.intro-toggle:hover {
+  background-color: #006655;
+  transform: scale(1.02);
+}
+
+/* 🌿 ভূমিকার কনটেন্ট (slide effect সহ) */
+.intro-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+  background: #f9fdf9;
+  border: 1px solid #d8ecd8;
+  border-radius: 15px;
+  padding: 0 20px;
+  margin-top: 15px;
+}
+
+/* ওপেন অবস্থায় */
+.intro-content.open {
+  max-height: none; /* পর্যাপ্ত বড় মান */
+  opacity: 1;
+  padding: 20px;
+}
+
+/* টেক্সটের রঙ ও ফরম্যাটিং */
+.surah-intro p {
+  color: #2f3640;
+  font-size: 1.05em;
+  line-height: 1.8;
+  font-family: "Noto Sans Bengali", "SolaimanLipi", sans-serif;
+}
+
+.surah-intro ul {
+  margin-left: 20px;
+  padding-left: 15px;
+}
+
+.surah-intro li {
+  margin: 8px 0;
+  line-height: 1.7;
+  color: #2c3e50;
+  list-style-type: "🌿 ";
+}
+
+.surah-intro i {
+  color: #145a32;
+  font-style: italic;
+}
+
+.surah-intro strong {
+  color: #045444;
+  font-weight: 700;
+}
+
+.surah-intro b {
+  color: #196f3d;
+  font-size: 1.1em;
+}
+
+/* 📱 মোবাইলের জন্য */
+@media (max-width: 768px) {
+  .surah-intro {
+    padding: 18px;
+    margin: 15px 0;
+  }
+
+  .intro-toggle {
+    font-size: 1.1em;
+    padding: 10px;
+  }
+
+  .surah-intro h2 {
+    font-size: 1.3em;
+  }
+}
+/* 🌿 FAQ Block Design (Compatible with existing ayat design) */
+
+.faq-block {
+  background: #f8fafc;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.faq-block h3 {
+  font-size: 1.4rem;
+  color: #0f172a;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #38bdf8;
+  padding-bottom: 6px;
+}
+
+.faq {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding: 15px 18px;
+  transition: all 0.3s ease;
+}
+
+.faq:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 3px 10px rgba(59, 130, 246, 0.08);
+  transform: scale(1.01);
+}
+
+.faq p.q {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #1e40af;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.faq p.q::before {
+  content: "❓ ";
+  font-size: 1.2rem;
+}
+
+.faq p.a {
+  color: #334155;
+  font-size: 0.97rem;
+  line-height: 1.65;
+  text-align: justify;
+  padding-left: 5px;
+}
+
+.faq p.a::before {
+  content: "🌿 ";
+  color: #10b981;
+}
+
+.faq-block .note {
+  font-size: 0.9rem;
+  color: #475569;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.faq-block strong {
+  color: #0f766e;
+}
+
+.ayat-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.ayat-header button {
+    padding: 5px 10px;
+    border: none;
+    background: #0a7b83;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.ayat-header button:hover {
+    background: #05575c;
+}
