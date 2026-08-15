@@ -176,49 +176,224 @@
     ইসলাম আমাদের নফসকে পবিত্র রাখতে শিখিয়েছে—চোখ হেফাজত, লজ্জাস্থান হেফাজত,
     সুন্নাহ অনুসারে দাম্পত্য জীবন এবং গুনাহ থেকে দূরে থাকার উপায়।
   </p>
+<body>
+  <!-- DYNAMIC HEADER -->
+  <div id="header"></div>
 
-  <p>
-    ইসলামিক দৃষ্টিতে সঠিক যৌন শিক্ষাও অত্যন্ত গুরুত্বপূর্ণ—যেখানে শালীন ভাষায় 
-    দাম্পত্য জীবনের আদব, হালাল-পথ, সুন্নত অনুসরণ এবং গুনাহের ক্ষতি পরিষ্কারভাবে
-    জানিয়ে দেয়া হয়। 
-  </p>
+  <main class="homepage-main">
 
-  <div class="dua" style="margin-top: 15px;">
-    <div class="arabic">اللَّهُمَّ احْفَظْنِي مِنْ فِتْنَةِ الشَّهَوَاتِ</div>
-    <div class="translit">আল্লাহুম্মাহ ইহফাযনী মিন ফিতনাতিশ শাহাওয়াত</div>
-    <div class="meaning">অর্থ: হে আল্লাহ! আমাকে নফসের ও কামনার ফিতনা থেকে হেফাজত করুন।</div>
-  </div>
+    <!-- ১. HERO SECTION (হেডলাইন + লাইভ সার্চ বার) -->
+    <section class="hero" data-aos="fade-down">
+      <div class="hero-content">
+        <span class="hero-badge">🌙 আহলুস সুন্নাহ ওয়াল জামা'আহ ভিত্তিক বিশ্বস্ত প্ল্যাটফর্ম</span>
+        <h1>ইসলামকে জানুন, বুঝুন ও অনুসরণ করুন</h1>
+        <p>পবিত্র কুরআন, সহিহ হাদিস, বিশুদ্ধ আকিদাহ ও নিত্যদিনের আমল — সব এক জায়গায়।</p>
+        
+        <!-- নতুন: ইনস্ট্যান্ট সার্চ বক্স -->
+        <div class="hero-search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="siteSearchInput" placeholder="কুরআনের কোনো সূরা, দু'আ বা বিষয় লিখে সার্চ করুন...">
+          <button type="button" class="btn-search">খুঁজুন</button>
+        </div>
 
-  <p>
-    Islam Light এ আমরা শালীনতা বজায় রেখে অশ্লীলতা থেকে মুক্তির উপায়, দাম্পত্য জীবনের
-    সুন্নত, এবং ইসলামিক নীতি অনুযায়ী যৌন শিক্ষার একটি পূর্ণাঙ্গ গাইড তৈরি করছি।
-  </p>
+        <div class="hero-quick-tags">
+          <span>জনপ্রিয়:</span>
+          <a href="quran/qur-index.html">সূরা আল-ফাতিহা</a>
+          <a href="namaj/salat.html">তাহাজ্জুদ নামাজ</a>
+          <a href="dua.html">রিজিকের দোয়া</a>
+          <a href="allah_names/names-of-allah.html">আল্লাহর ৯৯ নাম</a>
+        </div>
+      </div>
+    </section>
 
-  <a href="sexual-ethics/sexual-ethics.html" class="btn-primary" style="
-    display: inline-block;
-    margin-top: 10px;
-    background: var(--primary);
-    color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: 600;
-  ">📖 বিস্তারিত দেখুন</a>
-</section>
+    <!-- ২. নতুন: DAILY INSPIRATION (আজকের নির্বাচিত আয়াত ও সহিহ হাদিস) -->
+    <section class="container inspiration-wrapper" data-aos="fade-up">
+      <div class="inspiration-grid">
+        <!-- আজকের আয়াত -->
+        <div class="inspiration-card">
+          <div class="insp-header">
+            <span class="insp-tag tag-green"><i class="fa-solid fa-book-quran"></i> আজকের নির্বাচিত আয়াত</span>
+          </div>
+          <p class="arabic-text">قُلْ هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ وَالَّذِينَ لَا يَعْلَمُونَ</p>
+          <p class="bangla-text">“বলুন, যারা জানে এবং যারা জানে না তারা কি সমান হতে পারে? উপদেশ তো কেবল বুদ্ধিমান লোকেরাই গ্রহণ করে।”</p>
+          <div class="insp-footer">
+            <span class="ref-text">— সূরা আয-যুমার (৩৯), আয়াত ৯</span>
+            <button class="btn-copy" onclick="copyCardText(this)" title="কপি করুন"><i class="fa-regular fa-copy"></i></button>
+          </div>
+        </div>
 
-  <!-- QURAN VERSE -->
-  <div class="quran-verse" data-aos="fade-up">
-    <p>قُلْ هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ وَالَّذِينَ لَا يَعْلَمُونَ ۗ</p>
-    <p>বলুন, যারা জানে এবং যারা জানে না তারা কি সমান হতে পারে? উপদেশ তো কেবল বুদ্ধিমান লোকেরাই গ্রহণ করে।  
-      <span>- সূরা আয-যুমার (৩৯), আয়াত ৯</span>
-    </p>
-  </div>
+        <!-- আজকের হাদিস -->
+        <div class="inspiration-card">
+          <div class="insp-header">
+            <span class="insp-tag tag-amber"><i class="fa-solid fa-quote-left"></i> আজকের সহিহ হাদিস</span>
+          </div>
+          <p class="arabic-text">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
+          <p class="bangla-text">“তোমাদের মধ্যে সর্বোত্তম ব্যক্তি সে, যে নিজে কুরআন শিখে এবং অন্যকে শিক্ষা দেয়।”</p>
+          <div class="insp-footer">
+            <span class="ref-text">— সহিহ বুখারী, হাদিস নং ৫০২৭</span>
+            <button class="btn-copy" onclick="copyCardText(this)" title="কপি করুন"><i class="fa-regular fa-copy"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
 
- 
-<div id="footer"></div>
-   <script src="js/script.js" defer></script>
-  <!-- External JS -->
+    <!-- ৩. CORE SERVICES & FEATURE GRID (সব মূল ফিচার) -->
+    <section class="container section-gap">
+      <div class="section-header" data-aos="fade-up">
+        <h2>ইসলামিক লাইট সেবাসমূহ</h2>
+        <p>সহজে ও নির্ভরযোগ্যভাবে ইসলামের জ্ঞান অর্জনের মূল মাধ্যমসমূহ</p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- কুরআন -->
+        <div class="card-item" data-aos="fade-up">
+          <div class="card-icon bg-emerald"><i class="fa-solid fa-book-open-reader"></i></div>
+          <div class="card-body">
+            <h3>বাংলা কুরআন মাজীদ</h3>
+            <p>সহজ-সরল ও বিশুদ্ধ বাংলা অনুবাদসহ পবিত্র কুরআনুল কারীম অধ্যয়ন করুন।</p>
+          </div>
+          <a href="quran/qur-index.html" class="card-link">Explore Quran <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- আকিদাহ -->
+        <div class="card-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-icon bg-amber"><i class="fa-solid fa-landmark"></i></div>
+          <div class="card-body">
+            <h3>ইসলামিক আকীদাহ</h3>
+            <p>কুরআন ও সহীহ সুন্নাহর আলোকে বিশুদ্ধ বিশ্বাস ও সালাফে সালেহীনের মানহাজ।</p>
+          </div>
+          <a href="aqeedah/aqeedah.html" class="card-link">View Books <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- নামাজ শিক্ষা -->
+        <div class="card-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-icon bg-blue"><i class="fa-solid fa-person-praying"></i></div>
+          <div class="card-body">
+            <h3>নামাজ শিক্ষা</h3>
+            <p>নামাজের সম্পূর্ণ নিয়মাবলি, আরকান-আহকাম ও মাযহাবভিত্তিক মাসআলা।</p>
+          </div>
+          <a href="namaj/salat.html" class="card-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- দু'আ সমূহ -->
+        <div class="card-item" data-aos="fade-up">
+          <div class="card-icon bg-teal"><i class="fa-solid fa-hands-praying"></i></div>
+          <div class="card-body">
+            <h3>প্রয়োজনীয় দু‘আ সমূহ</h3>
+            <p>দৈনন্দিন জীবনের সহিহ মাসনুন দু'আ, জিকির ও অডিও উচ্চারণ।</p>
+          </div>
+          <a href="dua.html" class="card-link">View Dua <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- আল্লাহর ৯৯টি নাম -->
+        <div class="card-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-icon bg-gold"><i class="fa-solid fa-kaaba"></i></div>
+          <div class="card-body">
+            <h3>আল্লাহর ৯৯টি নাম</h3>
+            <p>আল্লাহ সুবহানাহু ওয়া তা'আলার পবিত্র গুণবাচক নামসমূহ অর্থ ও ব্যাখ্যাসহ।</p>
+          </div>
+          <a href="allah_names/names-of-allah.html" class="card-link">নামসমূহ দেখুন <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- ইসলামিক প্রশ্নোত্তর -->
+        <div class="card-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-icon bg-purple"><i class="fa-solid fa-clipboard-question"></i></div>
+          <div class="card-body">
+            <h3>ইসলামিক প্রশ্ন-উত্তর</h3>
+            <p>কুরআন ও সুন্নাহর আলোকে শত শত সমকালীন জিজ্ঞাসার নির্ভরযোগ্য সমাধান।</p>
+          </div>
+          <a href="islamic-qa.html" class="card-link">Search Q&A <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ৪. SPECIAL GUIDE: আত্মশুদ্ধি ও যৌন নীতি গাইড -->
+    <section class="container section-gap" data-aos="fade-up">
+      <div class="special-guide-card">
+        <div class="guide-badge"><i class="fa-solid fa-shield-halved"></i> বিশেষ আত্মশুদ্ধি ও চরিত্র গঠন গাইড</div>
+        <h2>পর্ন ও অশ্লীলতা থেকে বাঁচার উপায়</h2>
+        <p class="guide-desc">
+          বর্তমান যুগে পর্ন, অনৈতিক দৃশ্য ও নফসের ফিতনা যুবসমাজের ঈমানের জন্য বড় চ্যালেঞ্জ। ইসলাম আমাদের নফসকে পবিত্র রাখতে শিখিয়েছে—চোখের হেফাজত, লজ্জাস্থান হেফাজত এবং সুন্নাহ সম্মত জীবন ব্যবস্থা।
+        </p>
+
+        <div class="dua-highlight-box">
+          <div class="arabic-dua">اللَّهُمَّ احْفَظْنِي مِنْ فِتْنَةِ الشَّهَوَاتِ</div>
+          <div class="translit-dua">আল্লাহুম্মাহ ইহফাযনী মিন ফিতনাতিশ শাহাওয়াত</div>
+          <div class="meaning-dua">অর্থ: “হে আল্লাহ! আমাকে নফসের ও কামনার ফিতনা থেকে হেফাজত করুন।”</div>
+        </div>
+
+        <p class="guide-subtext">
+          শালীনতা বজায় রেখে অশ্লীলতা থেকে মুক্তির উপায়, দাম্পত্য জীবনের সুন্নত এবং ইসলামিক নীতি অনুযায়ী যৌন শিক্ষার পূর্ণাঙ্গ গাইড।
+        </p>
+
+        <a href="sexual-ethics/sexual-ethics.html" class="btn btn-gold">
+          📖 বিস্তারিত গাইড দেখুন <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ৫. ARTICLE BANNER (আর্টিকেল সেকশন) -->
+    <section class="container section-gap" data-aos="fade-up">
+      <div class="article-banner">
+        <div class="article-banner-text">
+          <span class="badge-tag">জ্ঞান ও আলোকবর্তিকা</span>
+          <h2>ইসলামিক আর্টিকেল ও বিশ্লেষণ</h2>
+          <p>আকীদা, দৈনন্দিন আমল, সমসাময়িক বিষয় ও ভুল ধারণার যুক্তিসঙ্গত সমাধান পড়ুন।</p>
+        </div>
+        <div class="article-banner-btn">
+          <a href="articles/article.html" class="btn btn-outline-white">
+            <i class="fa-solid fa-newspaper"></i> সকল আর্টিকেল পড়ুন
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ৬. নতুন: APP DOWNLOAD & COMMUNITY BANNER -->
+    <section class="container section-gap" data-aos="fade-up">
+      <div class="app-cta-banner">
+        <div class="app-cta-content">
+          <span class="badge-tag" style="background: rgba(4, 120, 87, 0.2); color: #047857;">মোবাইল অ্যাপ</span>
+          <h2>ইসলামিক লাইট অ্যাপ ব্যবহার করুন</h2>
+          <p>অফলাইন কুরআন, নোটিফিকেশনসহ নামাজের সঠিক সময় ও দু'আ সহজে পেতে আমাদের অ্যান্ড্রয়েড অ্যাপটি ডাউনলোড করুন।</p>
+          <div class="app-btn-group">
+            <a href="#" class="btn-store"><i class="fa-brands fa-android"></i> ডাইরেক্ট APK ডাউনলোড</a>
+            <a href="#" class="btn-store-outline"><i class="fa-brands fa-telegram"></i> টেলিগ্রাম কমিউনিটি</a>
+          </div>
+        </div>
+        <div class="app-cta-icon">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- DYNAMIC FOOTER -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/script.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 700, once: true, offset: 60 });
+      }
+    });
+
+    // আয়াত/হাদিস কপি করার ফাংশন
+    function copyCardText(btn) {
+      const card = btn.closest('.inspiration-card');
+      const textToCopy = `${card.querySelector('.bangla-text').innerText}\n${card.querySelector('.ref-text').innerText}`;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check" style="color: #059669;"></i>';
+        setTimeout(() => { btn.innerHTML = originalHTML; }, 2000);
+      });
+    }
+  </script>
 </body>
+   
 </html>
 
 
