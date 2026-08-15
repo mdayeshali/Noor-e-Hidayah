@@ -1,259 +1,233 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>সূরা আল-ফাতিহা</title>
-    <link rel="stylesheet" href="surah.css">
+   
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J5Y0QWR6H2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J5Y0QWR6H2');
+</script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5811972242681902"
+     crossorigin="anonymous"></script>
+   
+  <!-- Manifest Link -->
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#004d40">
+
+<!-- Service Worker Register Script -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Service Worker Registered!'))
+        .catch(err => console.log('Service Worker Error:', err));
+    });
+  }
+</script>
+   
+
+<!-- Title -->
+<title>Islamic Light | Quran, Hadith, Tafsir, Aqeedah, Salah, Fatwa & Dua in Bangla</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Islamic Light হলো কুরআন, সহীহ হাদীস, তাফসীর, আকীদা, নামাজ শিক্ষা, ফতোয়া, দোআ ও ইসলামিক প্রবন্ধের একটি নির্ভরযোগ্য বাংলা ইসলামিক ওয়েবসাইট।">
+<meta name="keywords" content="Islamic Light, Quran Bangla, Hadith Bangla, Tafsir Bangla, Aqeedah, Fatwa, Dua, Islamic Articles, Quran Translation, ইসলামিক লাইট, কুরআন, হাদীস, তাফসীর">
+<meta name="author" content="Mohammad Ayesh Ali">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Bengali">
+<meta name="theme-color" content="#004d40">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://islamiclight.in/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Islamic Light">
+<meta property="og:locale" content="bn_BD">
+<meta property="og:title" content="Islamic Light | Quran, Hadith, Tafsir, Salah, Aqeedah, Fatwa & Dua">
+<meta property="og:description" content="কুরআন, সহীহ হাদীস, তাফসীর, আকীদা, নামাজ শিক্ষা, ফতোয়া ও প্রয়োজনীয় দোআ এক জায়গায়।">
+<meta property="og:url" content="https://islamiclight.in/">
+<meta property="og:image" content="https://islamiclight.in/images/logo.webp">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Islamic Light Logo">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Islamic Light | Quran, Hadith, Tafsir, Salah, Aqeedah, Fatwa & Dua">
+<meta name="twitter:description" content="Explore Quran, Hadith, Tafsir, Aqeedah, Fatwa and Islamic Dua in Bangla.">
+<meta name="twitter:image" content="https://islamiclight.in/images/logo.webp">
+
+<!-- Favicon & App Icons -->
+<link rel="icon" type="image/webp" href="/images/logo.webp">
+<link rel="apple-touch-icon" href="/images/logo.webp">
+
+<!-- Organization Schema for Google Search -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Islamic Light",
+  "url": "https://islamiclight.in/",
+  "logo": "https://islamiclight.in/images/logo.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Mohammad Ayesh Ali"
+  }
+}
+</script>
+
+<!-- CSS & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <div class="sidebar" id="sidebar"></div>
-    
-    <div class="content">
-        <div class="ttt">
-            <div class="ttt-left-buttons">
-                <button class="menu-btn" onclick="toggleMenu()">সূরা-সমূহ</button>
-            </div>
-            
-            <div class="ttt-info-center">
-                <h1>সূরা ইউনুস</h1>
-                <h5 class="info">আয়াত সংখ্যা: ১০৯, রুকু সংখ্যা: ১১</h5>
-            </div>
+   <div id="header"></div>
+  
 
-            <div class="settings-container">
-                <a href="../index.html" class="home-btn" style="text-decoration: none;">হোম পেজ</a>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>📖 ইসলামকে জানুন, বুঝুন ও অনুসরণ করুন</h1>
+    <p>পবিত্র কুরআন, ইসলামিক আকিদাহ, দোয়া ও উপকারী ইসলামিক আর্টিকেল — সব এক জায়গায়।</p>
+  </section>
 
-                <button class="settings-btn" onclick="toggleSettings()">⚙</button>
-                <div id="font-sizer" class="font-sizer-hidden">
-                    <button onclick="changeFontSize(-1)">-</button>
-                    <button onclick="changeFontSize(1)">+</button>
-                </div>
-            </div>
-        </div>
-<div class="nnn">আয়াত সংখ্যাঃ- ১০৯,  রুকু সংখ্যাঃ-১১</div>
 
-<!-- 🌿 সূরা ইউনুস ভূমিকা শুরু -->
-<div class="surah-intro">
-  <button class="intro-toggle">📘 সূরা ইউনুস — ভূমিকা</button>
-  <div class="intro-content">
+   
 
-    <p>
-      <strong>সূরা ইউনুস</strong> অর্থ “ইউনুস (আঃ)-এর সূরা”।  
-      এটি কুরআনের <b>১০ম সূরা</b> এবং এতে মোট <b>১০৯টি আয়াত</b> রয়েছে।  
-      এটি একটি <b>মাক্কী সূরা</b> — অর্থাৎ মক্কায় অবতীর্ণ হয়েছে।  
-      এতে ঈমান, তাওহীদ, নবুওয়াত, আখিরাত, ধৈর্য ও দাওয়াতের মূলনীতি  
-      অত্যন্ত হৃদয়গ্রাহীভাবে উপস্থাপিত হয়েছে।
-    </p>
+  <!-- CONTENT CARDS -->
+  <div class="container">
 
-    <p>
-      যদিও সূরাটির নাম “ইউনুস” রাখা হয়েছে,  
-      তবে এই সূরায় হযরত ইউনুস (আঃ)-এর কাহিনি খুব সংক্ষেপে উপস্থাপিত হয়েছে —  
-      মূলত তাঁর কওমের সম্মিলিত তাওবার উল্লেখ রয়েছে।  
-      এ সূরা মানুষকে আল্লাহর দিকে ফিরে আসার আহ্বান, সত্য গ্রহণের পরামর্শ  
-      এবং মিথ্যার বিরুদ্ধে যুক্তিপূর্ণ অবস্থান উপস্থাপন করে।
-    </p>
 
-    <p>
-      সূরা ইউনুস হলো একটি অত্যন্ত আবেগময় সূরা —  
-      যেখানে একদিকে আছে ঈমানের সুস্পষ্ট যুক্তি,  
-      অন্যদিকে আছে মানব আত্মার অনুভূতিগুলোকে জাগ্রত করার গভীর ভাষা।  
-      এটি সত্যকে স্পষ্ট করে উপস্থাপন করে বলে —  
-      “সত্য এসেছে, অসত্য মুছে যাবে।”
-    </p>
+     
+    <div class="card" data-aos="fade-up">
+      <h2><a href="quran/qur-index.html"> বাংলা কুরআন মাজীদ</a></h2>
+      <p>অনুবাদসহ পবিত্র কুরআন পাঠ করুন।</p>
+      <a href="quran/qur-index.html" class="button">Explore Quran</a>
+    </div>
 
-    <p><strong>🌿 সূরা ইউনুস-এর মূল বিষয়সমূহ:</strong></p>
-    <ul>
-      <li>আল্লাহর একত্ব, সৃষ্টিজগতের নিদর্শন ও তাঁর মহিমা।</li>
-      <li>নবীদের দাওয়াত পদ্ধতি, ঈমানদারদের ধৈর্য ও দৃঢ়তার শিক্ষা।</li>
-      <li>ইউনুস (আঃ)-এর কওমের তাওবা — ইতিহাসে একমাত্র জাতি যারা ফেরেশতার শাস্তির আগে তাওবা করেছিল।</li>
-      <li>মিথ্যা দেবতা ও শিরকের ভিত্তিহীনতা।</li>
-      <li>মুমিন ও কাফিরের পরিণতি।</li>
-      <li>আল্লাহর প্রতি ভরসা, দুঃখে ধৈর্য ও কষ্টে তাওয়াক্কুল।</li>
-      <li>কুরআন আল্লাহর পক্ষ থেকে অবতীর্ণ সত্যগ্রন্থ—এর প্রমাণসমূহ।</li>
-    </ul>
 
-    <p><strong>🌸 সূরা ইউনুস-এর বৈশিষ্ট্য:</strong></p>
-    <ul>
-      <li>এটি এমন একটি সূরা যেখানে যুক্তি, বুদ্ধি ও হৃদয়ের ভাষায় মানুষকে সত্যের দিকে আহ্বান করা হয়েছে।</li>
-      <li>এ সূরায় আল্লাহ বলেন —  
-        <i>“নিঃসন্দেহে আল্লাহর বন্ধুদের কোনো ভয় নেই, তারা দুঃখিতও হবে না।”</i>  
-        (📖 সূরা ইউনুস, আয়াত ৬২)</li>
-      <li>কুরআন মানুষের জন্য রহমত — এই ঘোষণা এ সূরার বিশেষ বৈশিষ্ট্য।</li>
-      <li>সূরাটি মূলত দাওয়াত, ধৈর্য ও আল্লাহর সাহায্যের প্রতিশ্রুতির সূরা।</li>
-    </ul>
+   <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <h2><a href="aqeedah/aqeedah.html">ইসলামিক আকীদাহ</a></h2>
+      <p>কুরআন ও সহীহ সুন্নাহর আলোকে আহলুস সুন্নাহ ওয়াল জামাআহের বিশ্বাস ও আকিদার সংক্ষিপ্ত উপস্থাপন</p>
+      <a href="aqeedah/aqeedah.html" class="button">View Books</a>
+    </div>
 
-    <p><strong>🌿 গুরুত্বপূর্ণ ঐতিহাসিক প্রেক্ষাপট:</strong></p>
-    <p>
-      সূরা ইউনুস মক্কার শেষ দিকের সময়ে অবতীর্ণ —  
-      যখন মুসলমানরা নির্যাতিত, হতাশ ও ধৈর্যের পরীক্ষায় ছিলেন।  
-      তখন আল্লাহ তাদেরকে এই সূরার মাধ্যমে শক্তি, আশা ও স্থিরতা দান করেন।
-    </p>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <h2><a href="namaj/salat.html"> নামাজ শিক্ষা</a></h2>
+      <p>নামাজের সম্পূর্ণ শিক্ষা, দোয়া ও নিয়মাবলি — হানাফী ও শাফিঈ মাযহাব অনুযায়ী।</p>
+      <a href="namaj/salat.html" class="button">View Details</a>
+    </div>
 
-    <p>
-      বিশেষ করে হযরত ইউনুস (আঃ)-এর কওমের গল্প এই সূরার মূল শিক্ষা —  
-      যখন পুরো জাতি তাওবা করেছিল এবং আল্লাহ তাদের শাস্তি মাফ করেছিলেন।  
-      এটি দেখায় —  
-      <b>যে জাতি সত্যিই আল্লাহর দিকে ফিরে আসে, আল্লাহ তাদের পথ খুলে দেন।</b>
-    </p>
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <h2><a href="dua.html"> প্রয়োজনীয় দু‘আ সমূহ</a></h2>
+      <p>দৈনন্দিন জীবনের জন্য গুরুত্বপূর্ণ দোয়া সমূহ পড়ুন ও শুনুন।</p>
+      <a href="dua.html" class="button">View Dua</a>
+    </div>
 
-    <p><strong>💫 সূরা ইউনুস থেকে প্রাপ্ত শিক্ষা:</strong></p>
-    <ul>
-      <li>আল্লাহর দিকে ফিরে আসাই সাফল্য ও শান্তির পথ।</li>
-      <li>মুমিনের আসল শক্তি তার ঈমান ও আল্লাহর উপর ভরসা।</li>
-      <li>ধৈর্য ও দৃঢ়তা ছাড়া দাওয়াতের কাজ সফল হয় না।</li>
-      <li>শিরক ও মিথ্যা দেবতাদের কোনো শক্তি নেই — সত্য প্রতিষ্ঠিত হবেই।</li>
-      <li>দুনিয়ার সুখ–দুঃখ পরীক্ষা — আসল প্রতিদান আখিরাতে।</li>
-    </ul>
-
-    <p><strong>📖 সম্পর্কিত হাদীসসমূহ:</strong></p>
-    <ul>
-      <li>
-        রাসূলুল্লাহ ﷺ বলেছেন —  
-        <i>“ইউনুস (আঃ)-এর দোয়া এমন ছিল যা বিপদের সময় প্রতিটি মুসলমানের জন্য নিরাপত্তার দোয়া।”</i>  
-        (📖 তিরমিজি, হাদিস: ৩৫০৫)
-      </li>
-      <li>
-        নবী ﷺ বলেন —  
-        <i>“যে ব্যক্তি ‘লা ইলাহা ইল্লা আনতা সুবহানাকা’ এই দোয়া করবে,  
-        আল্লাহ তার দুঃখ দূর করে দেবেন।”</i>  
-        (📖 সহিহ হাকিম)
-      </li>
-      <li>
-        নবী ﷺ আরও বলেন —  
-        <i>“ইউনুস (আঃ) রুষ্ট হয়ে চলে গেলেও আল্লাহ তাঁকে রক্ষা করেছিলেন।  
-        কারণ তাঁর হৃদয় ছিল ঈমান ও তাওয়াক্কুলে পূর্ণ।”</i>  
-        (📖 সহিহ বুখারী)
-      </li>
-    </ul>
-
-    <p><strong>🌿 শিক্ষণীয় বিষয়:</strong></p>
-    <ul>
-      <li>মুমিন কখনো হতাশ হয় না — আশার দুয়ার সবসময় খোলা।</li>
-      <li>আল্লাহর সাহায্য খুব নিকটে; শুধু হৃদয়কে তাঁর দিকে ফিরিয়ে নাও।</li>
-      <li>দাওয়াতের কাজে ধৈর্য সবচেয়ে বড় শক্তি।</li>
-      <li>ইউনুস (আঃ)-এর কওমের গল্প প্রমাণ করে — সমষ্টিগত তাওবা জাতিকে শাস্তি থেকে রক্ষা করে।</li>
-      <li>সূরা ইউনুস আমাদের শেখায় —  
-          “সত্যকে গ্রহণ করো, মিথ্যার অনুসরণ করো না;  
-          আল্লাহর দিকে ফিরে আসো — তিনিই মুক্তিদাতা।”</li>
-    </ul>
-
+   
   </div>
-</div>
-<!-- 🌿 সূরা ইউনুস ভূমিকা শেষ -->
 
-
-
-<div class="ayat">
-  <button class="transliteration-btn" onclick="toggleTransliteration(this)">উচ্চারণ</button>
-  <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</div>
-  <div class="transliteration">বিসমিল্লাহির রাহমানির রাহীম</div>
-  <div class="translation">শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতিশয় দয়ালু।</div>
-    
-</div>
-
-<div class="ayat" id="ayat-1">
-
-    <div class="ayat-header">
-        <strong>আয়াত ১</strong>
-
-        <button class="transliteration-btn" onclick="toggleTransliteration(this)">
-            উচ্চারণ
-        </button>
-
-        <button class="copy-ayat" onclick="copyAyat(this)">
-            📋 কপি
-        </button>
-
-        <button class="share-ayat" onclick="shareAyat(this)">
-            🔗 শেয়ার
-        </button>
+   <!-- ======Names of Allah======== -->
+   <section class="feature-section">
+  <div class="feature-card">
+    <div class="feature-icon">
+      <i class="fa-solid fa-kaaba"></i>
     </div>
-
-    <div class="arabic">
-        الر ۚ  
-        تِلْكَ آيَاتُ  
-        الْكِتَابِ  
-        الْحَكِيمِ ﴿١﴾
+    <div class="feature-content">
+      <h3>আল্লাহর ৯৯টি নাম</h3>
+      <p>আল্লাহ সুবহানাহু ওয়া তা'আলার পবিত্র গুণবাচক নামসমূহ অর্থ ও উচ্চারণসহ জানুন।</p>
+      <a href="allah_names/names-of-allah.html" class="btn-feature">দেখুন <i class="fa-solid fa-arrow-right"></i></a>
     </div>
+  </div>
+   </section>
+   
 
-    <div class="transliteration">
-        আলিফ–লা–ম–রা।  
-        তিল্কা আয়াাতুল  
-        কিতাবিল–হাকীম।
-    </div>
-
-    <div class="translation">
-        “আলিফ–লাম–রা।  
-        এগুলো জ্ঞানপূর্ণ (হিকমতসমৃদ্ধ) কিতাবের আয়াত।” 📖✨
-    </div>
-
-    <div class="tafsir">
-        <strong>সংক্ষিপ্ত তাফসীর:</strong><br>
-        🌿 এই আয়াতে কুরআনের মহিমা ঘোষণা করা হয়েছে।  
-        আলিফ–লাম–রা — হুরুফে মুকাত্তাআত।  
-        এর প্রকৃত অর্থ আল্লাহ ছাড়া কেউ জানে না।
-
-        <br><br>
-
-        <strong>“تِلْكَ آيَاتُ الْكِتَابِ”</strong> —  
-        📘 অর্থ: এগুলো সেই কিতাবের আয়াত।  
-
-        ✔ কুরআন সাধারণ কোনো বই নয়  
-        ✔ আল্লাহর পক্ষ থেকে নাযিলকৃত  
-        ✔ সম্পূর্ণ সত্য ও প্রজ্ঞাপূর্ণ  
-
-        <br>
-
-        <strong>“الْكِتَابِ الْحَكِيمِ”</strong><br>
-        🌿 “হাকীম” মানে—  
-        ✔ প্রজ্ঞাময়  
-        ✔ নিখুঁত  
-        ✔ ভুল–ত্রুটিমুক্ত  
-
-        <br>
-
-        <strong>কেন কুরআন ‘হাকীম’?</strong><br>
-        ✔ এতে জীবনের প্রতিটি সমস্যার সমাধান আছে  
-        ✔ এতে কোনো বিরোধপূর্ণ কথা নেই  
-        ✔ সত্য, ন্যায় ও দিকনির্দেশনায় পরিপূর্ণ  
-
-        <br><br>
-
-        <strong>🌾 কঠিন শব্দের অর্থ:</strong>
-        <ul>
-            <li>آيَات — নিদর্শনসমূহ / আয়াতসমূহ</li>
-            <li>الْحَكِيم — প্রজ্ঞাময়, নিখুঁত</li>
-            <li>تِلْكَ — এগুলো / ঐসমূহ</li>
-        </ul>
-
-        <br>
-
-        🌿 <strong>শিক্ষনীয় বিষয়:</strong>
-        <ul>
-            <li>কুরআন প্রজ্ঞায় ভরপুর এক মহাগ্রন্থ।</li>
-            <li>এর প্রতিটি আয়াতে দিকনির্দেশনা রয়েছে।</li>
-            <li>মানুষ কখনো কুরআনের সমতুল্য কিছু আনতে পারবে না।</li>
-        </ul>
-
-        <br>
-
-        🌿 <strong>সংক্ষিপ্ত বার্তা:</strong><br>
-        **কুরআন— হিকমতপূর্ণ, নিখুঁত এবং সত্য কিতাব।**  
-    </div>
-
+    <!-- ========================= -->
+<!-- SINGLE ARTICLE BOX ON HOMEPAGE -->
+<div class="single-article-box" data-aos="fade-up">
+  <h2> ইসলামিক আর্টিকেল</h2>
+  <p>ইসলাম সম্পর্কে গুরুত্বপূর্ণ দিক, নলেজ, দোয়া, আকীদাহ ও ভুল ধারণার যুক্তিসঙ্গত উত্তর — সব এক জায়গায়।</p>
+  <a href="articles/article.html" class="article-button">আর্টিকেল পড়ুন</a>
 </div>
 
+   <div class="card" data-aos="fade-up">
+  <h2><a href="islamic-qa.html"> ইসলামিক প্রশ্ন-উত্তর</a></h2>
+  <p>হাদীস ও কুরআনের আলোকে শত শত জিজ্ঞাসার জবাব খুঁজুন।</p>
+  <a href="islamic-qa.html" class="button">Search Q&A</a>
+   </div>
 
-        
+   <!--  Islamic Light — পবিত্রতা ও নফসের হেফাজত সেকশন -->
+<section class="card fade-in" style="margin-top: 40px;">
+  <h2> পর্ন ও অশ্লীলতা থেকে বাঁচার উপায়</h2>
+  <p>
+    বর্তমান যুগে পর্ন, অশ্লীল কন্টেন্ট ও নফসের ফিতনা যুবসমাজের ঈমানের জন্য বড় চ্যালেঞ্জ।
+    ইসলাম আমাদের নফসকে পবিত্র রাখতে শিখিয়েছে—চোখ হেফাজত, লজ্জাস্থান হেফাজত,
+    সুন্নাহ অনুসারে দাম্পত্য জীবন এবং গুনাহ থেকে দূরে থাকার উপায়।
+  </p>
 
+  <p>
+    ইসলামিক দৃষ্টিতে সঠিক যৌন শিক্ষাও অত্যন্ত গুরুত্বপূর্ণ—যেখানে শালীন ভাষায় 
+    দাম্পত্য জীবনের আদব, হালাল-পথ, সুন্নত অনুসরণ এবং গুনাহের ক্ষতি পরিষ্কারভাবে
+    জানিয়ে দেয়া হয়। 
+  </p>
 
+  <div class="dua" style="margin-top: 15px;">
+    <div class="arabic">اللَّهُمَّ احْفَظْنِي مِنْ فِتْنَةِ الشَّهَوَاتِ</div>
+    <div class="translit">আল্লাহুম্মাহ ইহফাযনী মিন ফিতনাতিশ শাহাওয়াত</div>
+    <div class="meaning">অর্থ: হে আল্লাহ! আমাকে নফসের ও কামনার ফিতনা থেকে হেফাজত করুন।</div>
+  </div>
 
-        
+  <p>
+    Islam Light এ আমরা শালীনতা বজায় রেখে অশ্লীলতা থেকে মুক্তির উপায়, দাম্পত্য জীবনের
+    সুন্নত, এবং ইসলামিক নীতি অনুযায়ী যৌন শিক্ষার একটি পূর্ণাঙ্গ গাইড তৈরি করছি।
+  </p>
 
+  <a href="sexual-ethics/sexual-ethics.html" class="btn-primary" style="
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+  ">📖 বিস্তারিত দেখুন</a>
+</section>
 
+  <!-- QURAN VERSE -->
+  <div class="quran-verse" data-aos="fade-up">
+    <p>قُلْ هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ وَالَّذِينَ لَا يَعْلَمُونَ ۗ</p>
+    <p>বলুন, যারা জানে এবং যারা জানে না তারা কি সমান হতে পারে? উপদেশ তো কেবল বুদ্ধিমান লোকেরাই গ্রহণ করে।  
+      <span>- সূরা আয-যুমার (৩৯), আয়াত ৯</span>
+    </p>
+  </div>
 
-    </div>
-    <script src="surah.js"></script>
+ 
+<div id="footer"></div>
+   <script src="js/script.js" defer></script>
+  <!-- External JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
