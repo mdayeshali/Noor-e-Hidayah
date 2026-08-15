@@ -1,0 +1,554 @@
+/* ========================================
+ 🌙 Islamic Light Global Style
+ Author: Md Ayesh Ali | IslamicLight.in
+======================================== */
+
+
+/* ------------------------------
+   🌿 Base Theme Colors & Fonts
+------------------------------ */
+
+:root {
+  --primary: #004d40;
+  --accent: #009688;
+  --bg: #f7fafc;
+  --text: #222;
+  --card-bg: #ffffff;
+  --border: #dcdcdc;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --font-bn: "Noto Sans Bengali", "SolaimanLipi", sans-serif;
+}
+
+
+/* 🌙 Dark Mode */
+
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --text: #f1f1f1;
+  --card-bg: #1c1c1c;
+  --border: #333;
+  --shadow: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ------------------------------
+   🌸 Global Reset & Base
+------------------------------ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-bn);
+  line-height: 1.8;
+  transition: background 0.4s, color 0.4s;
+  padding-top: 55px; /* fixed header space */
+}
+
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+  transition: 0.3s;
+}
+/*
+a:hover {
+  color: var(--accent);
+}
+*/
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+
+/* ------------------------------
+   🌙 Header / Navbar
+------------------------------ */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+  z-index: 9999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  transition: 0.4s ease;
+}
+
+
+.site-header.scrolled {
+  background: #00382f;
+}
+
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+/* আগের .brand .moon এর পরিবর্তে নতুন লোগোর জন্য সিএসএস */
+.brand .brand-logo {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  border-radius: 50%; /* লোগোটি গোল শেপে সুন্দর দেখানোর জন্য */
+}
+
+
+
+.desktop-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.desktop-nav a {
+  color: white;
+  font-weight: 300;
+  padding: 6px 2px;
+  border-radius: 5px;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  background: rgba(255,255,255,0.1);
+  color: #ffeb3b;
+}
+
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.theme-toggle, .menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: 0.3s;
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+  color: #ffeb3b;
+}
+
+
+/* ------------------------------
+   📱 Mobile Nav (Updated for Dropdown Behavior)
+------------------------------ */
+
+.mobile-nav {
+  /* ড্রপডাউন স্টাইল */
+  position: fixed;
+  top: 55px; /* Header-এর উচ্চতার পরে শুরু হবে */
+  right: 15px; /* ডান দিক থেকে দূরত্ব */
+  
+  width: 250px; /* ড্রপডাউনের নির্দিষ্ট প্রস্থ */
+  max-height: 0; /* ডিফল্টভাবে লুকানো */
+  overflow-y:auto; /* ভেতরের উপাদান লুকানোর জন্য */
+  overflow-x:hidden;
+
+
+  
+  background: var(--primary);
+  box-shadow: 0 4px 15px var(--shadow);
+  border-radius: 8px;
+  
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* আইটেম বাম দিকে সরানো হলো */
+  z-index: 1000; /* overlay (999)-এর উপরে থাকবে */
+  
+  /* অ্যানিমেশন ট্রানজিশন যোগ করা হয়েছে */
+  transition: max-height 0.4s ease-out, opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(-10px); /* উপরে থেকে সামান্য নিচে স্লাইড হবে */
+  opacity: 0;
+}
+
+/* মেনু খোলার ক্লাস (JS এ এই ক্লাসটি যোগ হবে) */
+.mobile-nav.open {
+  max-height: 500px; /* কনটেন্ট অনুযায়ী একটি যথেষ্ট উচ্চতা দিন */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-nav a {
+  color: white;
+  padding: 12px 15px; /* প্যাডিং বাড়ানো হলো */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* শেষ আইটেমের নিচে বর্ডার সরান */
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav a:hover {
+  background: var(--accent);
+}
+
+/* ------------------------------
+   ✨ NEW: Overlay for Closing Menu
+------------------------------ */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999; /* mobile-nav (1000)-এর নিচে থাকবে */
+  background: rgba(0, 0, 0, 0.4); /* হালকা কালো শেড */
+  display: none; /* প্রাথমিক অবস্থায় লুকানো থাকবে */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* যখন ওভারলে দৃশ্যমান হবে (JS এই ক্লাসটি যোগ করবে) */
+#overlay.visible {
+  display: block;
+}
+
+/* Dua / Arabic Block */
+
+.dua {
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px var(--shadow);
+}
+
+.dua .arabic {
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--primary);
+  line-height: 2;
+}
+
+.dua .translit {
+  color: #444;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.dua .meaning {
+  background: rgba(0, 150, 136, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+
+/* Section Title */
+
+.section-title {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin: 25px 0 10px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+
+/* ========================================
+   🌙 Footer (Islamic Light)
+======================================== */
+
+
+.site-footer {
+  margin-top: 60px;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
+}
+
+
+.footer-brand {
+  margin-bottom: 20px;
+}
+
+
+.footer-logo {
+  width: 45px;
+  height: 45px;
+  background: white;
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin: 0 auto 8px;
+  font-weight: bold;
+}
+
+
+.footer-links {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+.footer-links a {
+  color: #ffeb3b;
+  text-decoration: none;
+  margin: 6px 10px;
+  display: inline-block;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+
+.footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+
+.footer-copy {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+
+/* Dark Mode Footer */
+
+[data-theme="dark"] .site-footer {
+  background: var(--primary-dark);
+}
+
+
+
+/* Arabic Font Size Fix for Mobile */
+
+@media (max-width: 600px) {
+  .dua .arabic {
+    font-size: 1.3rem;
+  }
+}
+
+
+
+
+/* ------------------------------
+   🌿 Animations
+------------------------------ */
+
+.fade-in {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ------------------------------
+   📱 Responsive (Updated)
+------------------------------ */
+
+@media (max-width: 900px) {
+  .desktop-nav { display: none; }
+  .menu-toggle { display: block; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 1rem; }
+  .container { padding: 0 15px; }
+  
+  /* Mobile Nav-কে ছোট স্ক্রিনে ডান দিকে আরও ভেতরে আনা হলো */
+  .mobile-nav {
+      right: 10px;
+      width: 220px; 
+  }
+}
+
+
+/* Share Button Style 
+
+.share-container {
+    margin: 20px 0;
+    position: relative;
+}
+
+
+.share-btn {
+    background: #0284c7;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.share-btn:hover {
+    background: #0369a1;
+}
+
+
+.share-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 180px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    z-index: 99;
+}
+
+
+.share-menu a {
+    display: block;
+    padding: 8px;
+    margin: 5px 0;
+    background: #f3f3f3;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+}
+
+
+.share-menu a:hover {
+    background: #e0e0e0;
+}
+*/
+
+/* ==========================================
+   Screen Bottom Fixed PWA Install Container
+========================================== */
+
+/* পুরো কন্টেইনার স্ক্রিনের নিচে ফিক্সড থাকবে */
+.floating-install-container {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 90%;
+  max-width: 420px;
+  pointer-events: none; /* পেজের ব্যাকগ্রাউন্ডে যেন ক্লিক করা যায় */
+}
+
+/* নোটিশ ও বাটনে ক্লিক সচল করা */
+.footer-app-notice,
+.floating-install-btn {
+  pointer-events: auto;
+}
+
+/* ফিক্সড নোটিশ টেক্সট স্টাইল */
+.footer-app-notice {
+  font-size: 0.85rem;
+  color: #004d40;
+  background-color: rgba(224, 242, 241, 0.95); /* হালকা ট্রান্সপারেন্ট টিল ব্যাকগ্রাউন্ড */
+  backdrop-filter: blur(4px); /* ঝাপসা ইফেক্ট */
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #b2dfdb;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.footer-app-notice i {
+  color: #00796b;
+  margin-right: 4px;
+}
+
+/* স্ক্রিনের নিচে ফিক্সড ইনস্টল বাটন */
+.floating-install-btn {
+  background-color: #e0f2fe; /* Light Ice Blue */
+  color: #004d40; /* গাঢ় সবুজ রঙ */
+  font-weight: bold;
+  font-size: 14px;
+  
+  padding: 10px 20px;
+  border: 1.5px solid #004d40;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  white-space: nowrap;
+  
+  /* আপনার কাস্টম নড়াচড়ার অ্যানিমেশন */
+  animation: pulseShake 4s infinite ease-in-out;
+}
+
+/* মাঝে মাঝে নড়াচড়া করার কাস্টম অ্যানিমেশন */
+@keyframes pulseShake {
+  0%, 80%, 100% {
+    transform: scale(1);
+  }
+  85% {
+    transform: scale(1.05) rotate(-3deg);
+  }
+  90% {
+    transform: scale(1.05) rotate(3deg);
+  }
+  95% {
+    transform: scale(1.05) rotate(-2deg);
+  }
+}
+
+/* মোবাইল ডিভাইসের জন্য স্পেসিং অ্যাডজাস্টমেন্ট */
+@media (max-width: 480px) {
+  .floating-install-container {
+    bottom: 10px;
+    width: 95%;
+  }
+
+  .footer-app-notice {
+    font-size: 0.78rem;
+    padding: 6px 12px;
+  }
+
+  .floating-install-btn {
+    font-size: 13px;
+    padding: 9px 18px;
+  }
+}
