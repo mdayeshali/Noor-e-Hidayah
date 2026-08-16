@@ -88,1197 +88,208 @@
 
 <!-- CSS & Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+   <div id="header"></div>
+  
 
+<!-- HERO SECTION WITH ISLAMIC CALENDAR -->
+<section class="hero-wrapper">
+  <div class="hero-container">
+    
+    <!-- Hero Text Content -->
+    <div class="hero-content">
+      <h1>📖 ইসলামকে জানুন, বুঝুন ও অনুসরণ করুন</h1>
+      <p>পবিত্র কুরআন, ইসলামিক আকিদাহ, দোয়া ও উপকারী ইসলামিক আর্টিকেল — সব এক জায়গায়।</p>
+    </div>
 
-  <!-- =========================================================
-       ISLAMIC LIGHT — MODERN HOMEPAGE
-       Header & Footer are loaded separately.
-       ========================================================= -->
-
-  <div id="header"></div>
-
-  <main class="il-home">
-
-    <!-- =======================================================
-         HERO SECTION
-         ======================================================= -->
-    <section class="il-hero" aria-labelledby="hero-title">
-
-      <div class="il-hero-inner">
-
-        <div class="il-hero-content" data-aos="fade-up">
-
-          <span class="il-eyebrow">
-            بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-          </span>
-
-          <h1 id="hero-title">
-            ইসলামকে জানুন,<br>
-            <span>বুঝুন ও অনুসরণ করুন</span>
-          </h1>
-
-          <p class="il-hero-description">
-            পবিত্র কুরআন, সহীহ সুন্নাহ, আকীদাহ, নামাজ, দোয়া,
-            ইসলামিক প্রশ্নোত্তর ও উপকারী জ্ঞান—সবকিছু এক জায়গায়।
-          </p>
-
-          <div class="il-hero-actions">
-
-            <a href="quran/qur-index.html" class="il-btn il-btn-primary">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/>
-                <path d="M4 5.5v16M20 19H6.5A2.5 2.5 0 0 0 4 21.5"/>
-              </svg>
-              কুরআন পড়ুন
-            </a>
-
-            <a href="dua.html" class="il-btn il-btn-light">
-              দোয়া সমূহ
-              <span>→</span>
-            </a>
-
-          </div>
-
-          <div class="il-hero-note">
-            <span>✓</span>
-            কুরআন ও সুন্নাহভিত্তিক ইসলামিক জ্ঞান
-          </div>
-
-        </div>
-
-
-        <!-- ===================================================
-             HERO SIDE — ISLAMIC CALENDAR
-             =================================================== -->
-
-        <div class="il-hero-side" data-aos="fade-left">
-
-          <button
-            type="button"
-            class="il-calendar-preview"
-            id="openIslamicCalendar"
-            aria-label="ইসলামিক ক্যালেন্ডার খুলুন"
-          >
-
-            <div class="il-calendar-top">
-
-              <div>
-                <span class="il-small-label">
-                  আজকের তারিখ
-                </span>
-
-                <strong id="todayGregorian">
-                  —
-                </strong>
-              </div>
-
-              <div class="il-calendar-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="3" y="4" width="18" height="17" rx="2"/>
-                  <path d="M16 2v4M8 2v4M3 9h18"/>
-                  <path d="M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01M16 17h.01"/>
-                </svg>
-              </div>
-
-            </div>
-
-            <div class="il-hijri-main">
-              <span>হিজরি তারিখ</span>
-              <strong id="todayHijri">
-                —
-              </strong>
-            </div>
-
-            <div class="il-calendar-footer">
-              <span>পূর্ণ ক্যালেন্ডার দেখুন</span>
-              <span class="il-arrow">→</span>
-            </div>
-
-          </button>
-
-        </div>
-
+    <!-- Islamic Calendar Mini Card -->
+    <div class="islamic-date-card" id="openCalendarBtn" title="সম্পূর্ণ মাসের ক্যালেন্ডার দেখতে ক্লিক করুন">
+      <div class="card-header">
+        <span class="moon-icon">🌙</span>
+        <span class="card-title">আজকের ইসলামিক তারিখ</span>
       </div>
-
-
-      <!-- Decorative pattern -->
-      <div class="il-hero-pattern" aria-hidden="true">
-        <span>۞</span>
-        <span>۞</span>
-        <span>۞</span>
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         QUICK ACCESS
-         ======================================================= -->
-
-    <section class="il-section il-quick-section">
-
-      <div class="il-section-heading">
-        <div>
-          <span class="il-section-label">শুরু করুন</span>
-          <h2>প্রধান বিভাগসমূহ</h2>
+      <div class="hijri-highlight">
+        <div class="hijri-day" id="hijriDay">--</div>
+        <div class="hijri-details">
+          <span class="hijri-month" id="hijriMonth">লোড হচ্ছে...</span>
+          <span class="hijri-year" id="hijriYear">---- হিজরি</span>
         </div>
-
-        <p>
-          আপনার প্রয়োজনীয় ইসলামিক বিষয় দ্রুত খুঁজে নিন।
-        </p>
       </div>
-
-
-      <div class="il-quick-grid">
-
-        <!-- Quran -->
-        <a href="quran/qur-index.html"
-           class="il-quick-card"
-           data-aos="fade-up">
-
-          <div class="il-card-icon">
-            <span>📖</span>
-          </div>
-
-          <div>
-            <h3>কুরআন মাজীদ</h3>
-            <p>বাংলা অনুবাদসহ পবিত্র কুরআন পাঠ করুন।</p>
-          </div>
-
-          <span class="il-card-arrow">→</span>
-
-        </a>
-
-
-        <!-- Hadith -->
-        <a href="#"
-           class="il-quick-card"
-           data-aos="fade-up"
-           data-aos-delay="50">
-
-          <div class="il-card-icon">
-            <span>📚</span>
-          </div>
-
-          <div>
-            <h3>হাদিস</h3>
-            <p>রাসূল ﷺ-এর হাদিস ও সুন্নাহ সম্পর্কে জানুন।</p>
-          </div>
-
-          <span class="il-card-arrow">→</span>
-
-        </a>
-
-
-        <!-- Aqeedah -->
-        <a href="aqeedah/aqeedah.html"
-           class="il-quick-card"
-           data-aos="fade-up"
-           data-aos-delay="100">
-
-          <div class="il-card-icon">
-            <span>☪</span>
-          </div>
-
-          <div>
-            <h3>আকীদাহ</h3>
-            <p>কুরআন ও সহীহ সুন্নাহর আলোকে আকীদাহ জানুন।</p>
-          </div>
-
-          <span class="il-card-arrow">→</span>
-
-        </a>
-
-
-        <!-- Salat -->
-        <a href="namaj/salat.html"
-           class="il-quick-card"
-           data-aos="fade-up"
-           data-aos-delay="150">
-
-          <div class="il-card-icon">
-            <span>🕌</span>
-          </div>
-
-          <div>
-            <h3>নামাজ শিক্ষা</h3>
-            <p>নামাজের নিয়ম, দোয়া ও প্রয়োজনীয় মাসআলা।</p>
-          </div>
-
-          <span class="il-card-arrow">→</span>
-
-        </a>
-
-
-        <!-- Dua -->
-        <a href="dua.html"
-           class="il-quick-card"
-           data-aos="fade-up"
-           data-aos-delay="200">
-
-          <div class="il-card-icon">
-            <span>🤲</span>
-          </div>
-
-          <div>
-            <h3>দোয়া সমূহ</h3>
-            <p>দৈনন্দিন জীবনের গুরুত্বপূর্ণ দোয়া পড়ুন।</p>
-          </div>
-
-          <span class="il-card-arrow">→</span>
-
-        </a>
-
-
-        <!-- Q&A -->
-        <a href="islamic-qa.html"
-           class="il-quick-card"
-           data-aos="fade-up"
-           data-aos-delay="250">
-
-          <div class="il-card-icon">
-            <span>❓</span>
-          </div>
-
-          <div>
-            <h3>ইসলামিক প্রশ্নোত্তর</h3>
-            <p>কুরআন ও হাদিসের আলোকে প্রশ্নের উত্তর খুঁজুন।</p>
-          </div>
-
-          <span class="il-card-arrow">→</span>
-
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         TODAY'S ISLAMIC INFORMATION
-         ======================================================= -->
-
-    <section class="il-section il-info-section">
-
-      <div class="il-info-grid">
-
-        <!-- Featured Knowledge -->
-        <div class="il-info-card il-featured-info">
-
-          <span class="il-section-label">
-            ইসলামিক জ্ঞান
-          </span>
-
-          <h2>
-            প্রতিদিন কিছু না কিছু<br>
-            <span>শিখুন ও আমল করুন</span>
-          </h2>
-
-          <p>
-            ইসলাম সম্পর্কে সঠিক জ্ঞান অর্জন করুন এবং
-            কুরআন ও সুন্নাহর আলোকে নিজের জীবনকে সুন্দর করুন।
-          </p>
-
-          <a href="articles/article.html" class="il-text-button">
-            ইসলামিক আর্টিকেল দেখুন →
-          </a>
-
+      <div class="sub-dates">
+        <div class="sub-date-item">
+          <span>📅 ইংরেজি:</span> <strong id="gregorianDate">-- -- ----</strong>
         </div>
-
-
-        <!-- Today's Ayah -->
-        <div class="il-info-card il-ayah-card">
-
-          <div class="il-ayah-header">
-            <span>কুরআনের আলো</span>
-            <span class="il-arabic-small">آيَةٌ</span>
-          </div>
-
-          <div class="il-arabic-ayah">
-            قُلْ هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ
-            وَالَّذِينَ لَا يَعْلَمُونَ
-          </div>
-
-          <p>
-            “বলুন, যারা জানে এবং যারা জানে না তারা কি সমান হতে পারে?”
-          </p>
-
-          <span class="il-ayah-reference">
-            সূরা আয-যুমার — ৩৯:৯
-          </span>
-
+        <div class="sub-date-item">
+          <span>🌾 বাংলা:</span> <strong id="bengaliDate">-- -- ----</strong>
         </div>
-
       </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         ALLAH'S NAMES
-         ======================================================= -->
-
-    <section class="il-section">
-
-      <div class="il-feature-large" data-aos="fade-up">
-
-        <div class="il-feature-symbol">
-          <span>ﷲ</span>
-        </div>
-
-        <div class="il-feature-text">
-
-          <span class="il-section-label">
-            বিশেষ ফিচার
-          </span>
-
-          <h2>
-            আল্লাহর ৯৯টি নাম
-          </h2>
-
-          <p>
-            আল্লাহ সুবহানাহু ওয়া তা‘আলার পবিত্র গুণবাচক
-            নামসমূহ অর্থ ও উচ্চারণসহ জানুন এবং স্মরণ করুন।
-          </p>
-
-        </div>
-
-        <a
-          href="allah_names/names-of-allah.html"
-          class="il-feature-button"
-        >
-          নামগুলো দেখুন
-          <span>→</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         FEATURED ARTICLES
-         ======================================================= -->
-
-    <section class="il-section il-articles-section">
-
-      <div class="il-section-heading">
-
-        <div>
-          <span class="il-section-label">
-            ইসলামিক জ্ঞান
-          </span>
-
-          <h2>
-            নির্বাচিত আর্টিকেল
-          </h2>
-        </div>
-
-        <a href="articles/article.html" class="il-view-all">
-          সব আর্টিকেল →
-        </a>
-
-      </div>
-
-
-      <div class="il-article-grid">
-
-        <article class="il-article-card" data-aos="fade-up">
-
-          <div class="il-article-image il-article-image-1">
-            <span>📖</span>
-          </div>
-
-          <div class="il-article-content">
-
-            <span class="il-article-tag">
-              ইসলামিক জ্ঞান
-            </span>
-
-            <h3>
-              কুরআন ও সুন্নাহর আলোকে সুন্দর জীবন
-            </h3>
-
-            <p>
-              একজন মুসলিম কীভাবে কুরআন ও সুন্নাহর
-              আলোকে জীবন পরিচালনা করতে পারেন।
-            </p>
-
-            <a href="articles/article.html">
-              পড়ুন →
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="il-article-card"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-
-          <div class="il-article-image il-article-image-2">
-            <span>☪</span>
-          </div>
-
-          <div class="il-article-content">
-
-            <span class="il-article-tag">
-              আকীদাহ
-            </span>
-
-            <h3>
-              সঠিক আকীদাহ জানা কেন গুরুত্বপূর্ণ?
-            </h3>
-
-            <p>
-              একজন মুসলিমের ঈমান ও আমলের ভিত্তি
-              সঠিক আকীদাহর ওপর প্রতিষ্ঠিত।
-            </p>
-
-            <a href="articles/article.html">
-              পড়ুন →
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="il-article-card"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-
-          <div class="il-article-image il-article-image-3">
-            <span>🤲</span>
-          </div>
-
-          <div class="il-article-content">
-
-            <span class="il-article-tag">
-              আমল
-            </span>
-
-            <h3>
-              দোয়ার মাধ্যমে আল্লাহর কাছে ফিরে আসুন
-            </h3>
-
-            <p>
-              বিপদ, দুশ্চিন্তা ও দৈনন্দিন জীবনে
-              দোয়ার গুরুত্ব সম্পর্কে জানুন।
-            </p>
-
-            <a href="articles/article.html">
-              পড়ুন →
-            </a>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         Q&A SECTION
-         ======================================================= -->
-
-    <section class="il-section">
-
-      <div class="il-qa-banner" data-aos="fade-up">
-
-        <div class="il-qa-icon">
-          ?
-        </div>
-
-        <div class="il-qa-content">
-
-          <span class="il-section-label">
-            ইসলামিক প্রশ্নোত্তর
-          </span>
-
-          <h2>
-            আপনার প্রশ্নের উত্তর খুঁজুন
-          </h2>
-
-          <p>
-            কুরআন ও সহীহ হাদিসের আলোকে ইসলামিক
-            বিভিন্ন প্রশ্নের উত্তর পড়ুন।
-          </p>
-
-        </div>
-
-        <a href="islamic-qa.html" class="il-btn il-btn-primary">
-          প্রশ্নোত্তর দেখুন
-          <span>→</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         BABY NAMES
-         ======================================================= -->
-
-    <section class="il-section">
-
-      <div class="il-baby-card" data-aos="fade-up">
-
-        <div class="il-baby-image">
-
-          <img
-            src="/images/baby-photo.webp"
-            alt="শিশুদের সুন্দর ইসলামিক নাম"
-            loading="lazy"
-          >
-
-        </div>
-
-        <div class="il-baby-content">
-
-          <span class="il-section-label">
-            পরিবারের জন্য
-          </span>
-
-          <h2>
-            শিশুদের সুন্দর ইসলামিক নাম ও অর্থ
-          </h2>
-
-          <p>
-            আপনার নবজাতকের জন্য অর্থ ও অনুবাদসহ
-            সুন্দর ইসলামিক নামের সংগ্রহ থেকে পছন্দের
-            নাম নির্বাচন করুন।
-          </p>
-
-          <a
-            href="/child-name/child-name.html"
-            class="il-text-button"
-          >
-            নামের তালিকা দেখুন →
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         SPECIAL ISLAMIC GUIDE
-         ======================================================= -->
-
-    <section class="il-section">
-
-      <div class="il-guide-card" data-aos="fade-up">
-
-        <div class="il-guide-content">
-
-          <span class="il-section-label">
-            বিশেষ ইসলামিক গাইড
-          </span>
-
-          <h2>
-            নফস ও অশ্লীলতা থেকে নিজেকে হেফাজত করুন
-          </h2>
-
-          <p>
-            বর্তমান সময়ের বিভিন্ন ফিতনা ও অশ্লীলতা থেকে
-            নিজেকে রক্ষা করতে ইসলাম আমাদের চোখ, লজ্জাস্থান
-            ও নফসের হেফাজতের শিক্ষা দিয়েছে।
-          </p>
-
-          <div class="il-guide-points">
-
-            <span>✓ চোখের হেফাজত</span>
-            <span>✓ নফসের নিয়ন্ত্রণ</span>
-            <span>✓ হালাল জীবনযাপন</span>
-
-          </div>
-
-          <a
-            href="sexual-ethics/sexual-ethics.html"
-            class="il-btn il-btn-primary"
-          >
-            বিস্তারিত গাইড
-            <span>→</span>
-          </a>
-
-        </div>
-
-
-        <div class="il-guide-arabic">
-
-          <div class="il-dua-arabic">
-            اللَّهُمَّ احْفَظْنِي
-            مِنْ فِتْنَةِ الشَّهَوَاتِ
-          </div>
-
-          <p>
-            হে আল্লাহ! আমাকে কামনা-বাসনার
-            ফিতনা থেকে হেফাজত করুন।
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         FINAL CALL TO ACTION
-         ======================================================= -->
-
-    <section class="il-final-cta">
-
-      <div class="il-final-cta-inner">
-
-        <span class="il-final-icon">☘</span>
-
-        <h2>
-          জ্ঞান অর্জন করুন, আমল করুন
-        </h2>
-
-        <p>
-          কুরআন ও সুন্নাহর আলোকে আপনার জীবনকে
-          আরও সুন্দর ও আলোকিত করুন।
-        </p>
-
-        <div class="il-final-actions">
-
-          <a
-            href="quran/qur-index.html"
-            class="il-btn il-btn-light"
-          >
-            কুরআন পড়ুন
-          </a>
-
-          <a
-            href="dua.html"
-            class="il-btn il-btn-outline"
-          >
-            দোয়া শিখুন
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================================================
-       ISLAMIC CALENDAR MODAL
-       ========================================================= -->
-
-  <div
-    class="il-calendar-modal"
-    id="islamicCalendarModal"
-    aria-hidden="true"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="calendarModalTitle"
-  >
-
-    <div class="il-calendar-overlay" id="calendarOverlay"></div>
-
-    <div class="il-calendar-dialog">
-
-      <div class="il-calendar-dialog-header">
-
-        <div>
-          <span class="il-section-label">
-            ইসলামিক ক্যালেন্ডার
-          </span>
-
-          <h2 id="calendarModalTitle">
-            —
-          </h2>
-
-          <p id="calendarHijriTitle">
-            —
-          </p>
-        </div>
-
-        <button
-          type="button"
-          class="il-calendar-close"
-          id="closeIslamicCalendar"
-          aria-label="ক্যালেন্ডার বন্ধ করুন"
-        >
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="il-calendar-navigation">
-
-        <button
-          type="button"
-          id="previousCalendarMonth"
-          aria-label="আগের মাস"
-        >
-          ‹
-        </button>
-
-        <strong id="calendarMonthTitle">
-          —
-        </strong>
-
-        <button
-          type="button"
-          id="nextCalendarMonth"
-          aria-label="পরবর্তী মাস"
-        >
-          ›
-        </button>
-
-      </div>
-
-
-      <div class="il-calendar-weekdays">
-
-        <span>রবি</span>
-        <span>সোম</span>
-        <span>মঙ্গল</span>
-        <span>বুধ</span>
-        <span>বৃহঃ</span>
-        <span>শুক্র</span>
-        <span>শনি</span>
-
-      </div>
-
-
-      <div
-        class="il-calendar-days"
-        id="calendarDays"
-      ></div>
-
-
-      <div class="il-calendar-note">
-
-        <span class="il-today-dot"></span>
-
-        <span>
-          সবুজ চিহ্নিত তারিখটি আজকের তারিখ।
-        </span>
-
-      </div>
-
+      <div class="card-hint">👆 সম্পূর্ণ ক্যালেন্ডার দেখতে ট্যাপ করুন</div>
     </div>
 
   </div>
+</section>
+
+<!-- FULL MONTH CALENDAR MODAL -->
+<div class="cal-modal-overlay" id="calModalOverlay">
+  <div class="cal-modal-box">
+    <!-- Modal Header -->
+    <div class="cal-modal-header">
+      <button class="cal-nav-btn" id="prevMonthBtn" title="পূর্ববর্তী মাস">‹</button>
+      <div class="cal-modal-title">
+        <h3 id="modalHijriMonth">--</h3>
+        <p id="modalSubTitle">--</p>
+      </div>
+      <button class="cal-nav-btn" id="nextMonthBtn" title="পরবর্তী মাস">›</button>
+      <button class="cal-close-btn" id="closeCalModalBtn">&times;</button>
+    </div>
+
+    <!-- Weekday Labels -->
+    <div class="cal-weekdays">
+      <span>রবি</span><span>সোম</span><span>মঙ্গল</span><span>বুধ</span><span>বৃহঃ</span><span>শুক্র</span><span>শনি</span>
+    </div>
+
+    <!-- Days Grid -->
+    <div class="cal-grid" id="calDaysGrid">
+      <!-- Generated via JS -->
+    </div>
+  </div>
+</div>
+   
 
-
-  <!-- =========================================================
-       FOOTER
-       ========================================================= -->
-
-  <div id="footer"></div>
-
-
-  <!-- Existing scripts -->
-  <script src="/js/script.js" defer></script>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-
-  <!-- =========================================================
-       ISLAMIC CALENDAR SCRIPT
-       Browser-এর Intl Islamic Calendar ব্যবহার করে।
-       ========================================================= -->
-
-  <script>
-
-    document.addEventListener("DOMContentLoaded", function () {
-
-      /* -----------------------------------------
-         AOS
-         ----------------------------------------- */
-
-      if (typeof AOS !== "undefined") {
-        AOS.init({
-          duration: 650,
-          once: true,
-          offset: 60
-        });
-      }
-
-
-      /* -----------------------------------------
-         Calendar Elements
-         ----------------------------------------- */
-
-      const openButton =
-        document.getElementById("openIslamicCalendar");
-
-      const closeButton =
-        document.getElementById("closeIslamicCalendar");
-
-      const overlay =
-        document.getElementById("calendarOverlay");
-
-      const modal =
-        document.getElementById("islamicCalendarModal");
-
-      const daysContainer =
-        document.getElementById("calendarDays");
-
-      const monthTitle =
-        document.getElementById("calendarMonthTitle");
-
-      const modalTitle =
-        document.getElementById("calendarModalTitle");
-
-      const hijriTitle =
-        document.getElementById("calendarHijriTitle");
-
-      const previousButton =
-        document.getElementById("previousCalendarMonth");
-
-      const nextButton =
-        document.getElementById("nextCalendarMonth");
-
-      const todayGregorian =
-        document.getElementById("todayGregorian");
-
-      const todayHijri =
-        document.getElementById("todayHijri");
-
-
-      /* -----------------------------------------
-         Current Date
-         ----------------------------------------- */
-
-      const today = new Date();
-
-      let calendarDate = new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        1
-      );
-
-
-      /* -----------------------------------------
-         Formatters
-         ----------------------------------------- */
-
-      const gregorianFormatter =
-        new Intl.DateTimeFormat(
-          "bn-BD",
-          {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-          }
-        );
-
-
-      const hijriFormatter =
-        new Intl.DateTimeFormat(
-          "bn-BD-u-ca-islamic",
-          {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-          }
-        );
-
-
-      const hijriDayFormatter =
-        new Intl.DateTimeFormat(
-          "en-US-u-ca-islamic",
-          {
-            day: "numeric"
-          }
-        );
-
-
-      const hijriMonthFormatter =
-        new Intl.DateTimeFormat(
-          "bn-BD-u-ca-islamic",
-          {
-            month: "long",
-            year: "numeric"
-          }
-        );
-
-
-      const monthFormatter =
-        new Intl.DateTimeFormat(
-          "bn-BD",
-          {
-            month: "long",
-            year: "numeric"
-          }
-        );
-
-
-      /* -----------------------------------------
-         Today's Date
-         ----------------------------------------- */
-
-      todayGregorian.textContent =
-        gregorianFormatter.format(today);
-
-      todayHijri.textContent =
-        hijriFormatter.format(today);
-
-
-      /* -----------------------------------------
-         Render Calendar
-         ----------------------------------------- */
-
-      function renderCalendar() {
-
-        daysContainer.innerHTML = "";
-
-        const year =
-          calendarDate.getFullYear();
-
-        const month =
-          calendarDate.getMonth();
-
-        const firstDay =
-          new Date(year, month, 1).getDay();
-
-        const daysInMonth =
-          new Date(year, month + 1, 0).getDate();
-
-
-        monthTitle.textContent =
-          monthFormatter.format(calendarDate);
-
-
-        modalTitle.textContent =
-          monthFormatter.format(calendarDate);
-
-
-        hijriTitle.textContent =
-          hijriMonthFormatter.format(calendarDate);
-
-
-        /* Empty cells */
-
-        for (
-          let i = 0;
-          i < firstDay;
-          i++
-        ) {
-
-          const empty =
-            document.createElement("span");
-
-          empty.className =
-            "il-calendar-empty";
-
-          daysContainer.appendChild(empty);
-        }
-
-
-        /* Days */
-
-        for (
-          let day = 1;
-          day <= daysInMonth;
-          day++
-        ) {
-
-          const cell =
-            document.createElement("button");
-
-          cell.type = "button";
-
-          cell.className =
-            "il-calendar-day";
-
-
-          const current =
-            new Date(year, month, day);
-
-
-          /* Gregorian day */
-
-          const gregorian =
-            document.createElement("strong");
-
-          gregorian.textContent =
-            day;
-
-
-          /* Hijri day */
-
-          const hijri =
-            document.createElement("small");
-
-          hijri.textContent =
-            hijriDayFormatter.format(current);
-
-
-          cell.appendChild(gregorian);
-
-          cell.appendChild(hijri);
-
-
-          /* Today */
-
-          if (
-            current.getFullYear() === today.getFullYear() &&
-            current.getMonth() === today.getMonth() &&
-            current.getDate() === today.getDate()
-          ) {
-
-            cell.classList.add(
-              "is-today"
-            );
-
-          }
-
-
-          daysContainer.appendChild(cell);
-
-        }
-
-      }
-
-
-      /* -----------------------------------------
-         Open Calendar
-         ----------------------------------------- */
-
-      function openCalendar() {
-
-        renderCalendar();
-
-        modal.classList.add("is-open");
-
-        modal.setAttribute(
-          "aria-hidden",
-          "false"
-        );
-
-        document.body.classList.add(
-          "il-calendar-open"
-        );
-
-      }
-
-
-      /* -----------------------------------------
-         Close Calendar
-         ----------------------------------------- */
-
-      function closeCalendar() {
-
-        modal.classList.remove("is-open");
-
-        modal.setAttribute(
-          "aria-hidden",
-          "true"
-        );
-
-        document.body.classList.remove(
-          "il-calendar-open"
-        );
-
-      }
-
-
-      /* -----------------------------------------
-         Events
-         ----------------------------------------- */
-
-      openButton.addEventListener(
-        "click",
-        openCalendar
-      );
-
-
-      closeButton.addEventListener(
-        "click",
-        closeCalendar
-      );
-
-
-      overlay.addEventListener(
-        "click",
-        closeCalendar
-      );
-
-
-      previousButton.addEventListener(
-        "click",
-        function () {
-
-          calendarDate.setMonth(
-            calendarDate.getMonth() - 1
-          );
-
-          renderCalendar();
-
-        }
-      );
-
-
-      nextButton.addEventListener(
-        "click",
-        function () {
-
-          calendarDate.setMonth(
-            calendarDate.getMonth() + 1
-          );
-
-          renderCalendar();
-
-        }
-      );
-
-
-      /* ESC key */
-
-      document.addEventListener(
-        "keydown",
-        function (event) {
-
-          if (
-            event.key === "Escape" &&
-            modal.classList.contains("is-open")
-          ) {
-
-            closeCalendar();
-
-          }
-
-        }
-      );
-
-    });
-
-  </script>
-
-</body>
 
    
+
+  <!-- CONTENT CARDS -->
+  <div class="container">
+
+
+     
+    <div class="card" data-aos="fade-up">
+      <h2><a href="quran/qur-index.html"> বাংলা কুরআন মাজীদ</a></h2>
+      <p>অনুবাদসহ পবিত্র কুরআন পাঠ করুন।</p>
+      <a href="quran/qur-index.html" class="button">Explore Quran</a>
+    </div>
+
+
+   <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <h2><a href="aqeedah/aqeedah.html">ইসলামিক আকীদাহ</a></h2>
+      <p>কুরআন ও সহীহ সুন্নাহর আলোকে আহলুস সুন্নাহ ওয়াল জামাআহের বিশ্বাস ও আকিদার সংক্ষিপ্ত উপস্থাপন</p>
+      <a href="aqeedah/aqeedah.html" class="button">View Books</a>
+    </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <h2><a href="namaj/salat.html"> নামাজ শিক্ষা</a></h2>
+      <p>নামাজের সম্পূর্ণ শিক্ষা, দোয়া ও নিয়মাবলি — হানাফী ও শাফিঈ মাযহাব অনুযায়ী।</p>
+      <a href="namaj/salat.html" class="button">View Details</a>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <h2><a href="dua.html"> প্রয়োজনীয় দু‘আ সমূহ</a></h2>
+      <p>দৈনন্দিন জীবনের জন্য গুরুত্বপূর্ণ দোয়া সমূহ পড়ুন ও শুনুন।</p>
+      <a href="dua.html" class="button">View Dua</a>
+    </div>
+
+   
+  </div>
+
+   <!-- ======Names of Allah======== -->
+   <section class="feature-section">
+  <div class="feature-card">
+    <div class="feature-icon">
+      <i class="fa-solid fa-kaaba"></i>
+    </div>
+    <div class="feature-content">
+      <h3>আল্লাহর ৯৯টি নাম</h3>
+      <p>আল্লাহ সুবহানাহু ওয়া তা'আলার পবিত্র গুণবাচক নামসমূহ অর্থ ও উচ্চারণসহ জানুন।</p>
+      <a href="allah_names/names-of-allah.html" class="btn-feature">দেখুন <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+   </section>
+   
+
+    <!-- ========================= -->
+<!-- SINGLE ARTICLE BOX ON HOMEPAGE -->
+<div class="single-article-box" data-aos="fade-up">
+  <h2> ইসলামিক আর্টিকেল</h2>
+  <p>ইসলাম সম্পর্কে গুরুত্বপূর্ণ দিক, নলেজ, দোয়া, আকীদাহ ও ভুল ধারণার যুক্তিসঙ্গত উত্তর — সব এক জায়গায়।</p>
+  <a href="articles/article.html" class="article-button">আর্টিকেল পড়ুন</a>
+</div>
+
+   <div class="card" data-aos="fade-up">
+  <h2><a href="islamic-qa.html"> ইসলামিক প্রশ্ন-উত্তর</a></h2>
+  <p>হাদীস ও কুরআনের আলোকে শত শত জিজ্ঞাসার জবাব খুঁজুন।</p>
+  <a href="islamic-qa.html" class="button">Search Q&A</a>
+   </div>
+
+   <!--  Islamic Light — পবিত্রতা ও নফসের হেফাজত সেকশন -->
+<section class="card fade-in" style="margin-top: 40px;">
+  <h2> পর্ন ও অশ্লীলতা থেকে বাঁচার উপায়</h2>
+  <p>
+    বর্তমান যুগে পর্ন, অশ্লীল কন্টেন্ট ও নফসের ফিতনা যুবসমাজের ঈমানের জন্য বড় চ্যালেঞ্জ।
+    ইসলাম আমাদের নফসকে পবিত্র রাখতে শিখিয়েছে—চোখ হেফাজত, লজ্জাস্থান হেফাজত,
+    সুন্নাহ অনুসারে দাম্পত্য জীবন এবং গুনাহ থেকে দূরে থাকার উপায়।
+  </p>
+
+  <p>
+    ইসলামিক দৃষ্টিতে সঠিক যৌন শিক্ষাও অত্যন্ত গুরুত্বপূর্ণ—যেখানে শালীন ভাষায় 
+    দাম্পত্য জীবনের আদব, হালাল-পথ, সুন্নত অনুসরণ এবং গুনাহের ক্ষতি পরিষ্কারভাবে
+    জানিয়ে দেয়া হয়। 
+  </p>
+
+  <div class="dua" style="margin-top: 15px;">
+    <div class="arabic">اللَّهُمَّ احْفَظْنِي مِنْ فِتْنَةِ الشَّهَوَاتِ</div>
+    <div class="translit">আল্লাহুম্মাহ ইহফাযনী মিন ফিতনাতিশ শাহাওয়াত</div>
+    <div class="meaning">অর্থ: হে আল্লাহ! আমাকে নফসের ও কামনার ফিতনা থেকে হেফাজত করুন।</div>
+  </div>
+
+  <p>
+    Islam Light এ আমরা শালীনতা বজায় রেখে অশ্লীলতা থেকে মুক্তির উপায়, দাম্পত্য জীবনের
+    সুন্নত, এবং ইসলামিক নীতি অনুযায়ী যৌন শিক্ষার একটি পূর্ণাঙ্গ গাইড তৈরি করছি।
+  </p>
+
+  <a href="sexual-ethics/sexual-ethics.html" class="btn-primary" style="
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+  ">📖 বিস্তারিত দেখুন</a>
+</section>
+
+  <!-- QURAN VERSE -->
+  <div class="quran-verse" data-aos="fade-up">
+    <p>قُلْ هَلْ يَسْتَوِي الَّذِينَ يَعْلَمُونَ وَالَّذِينَ لَا يَعْلَمُونَ ۗ</p>
+    <p>বলুন, যারা জানে এবং যারা জানে না তারা কি সমান হতে পারে? উপদেশ তো কেবল বুদ্ধিমান লোকেরাই গ্রহণ করে।  
+      <span>- সূরা আয-যুমার (৩৯), আয়াত ৯</span>
+    </p>
+  </div>
+
+ 
+<div id="footer"></div>
+   <script src="js/script.js" defer></script>
+  <!-- External JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
 </html>
 
+
+
+
+
+
+
+
+
+
+
+   
 
 
 
