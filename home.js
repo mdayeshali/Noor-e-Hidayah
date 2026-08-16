@@ -1,5 +1,5 @@
 /* =======================================================
-   🌙 ISLAMIC & BENGALI CALENDAR SYSTEM
+   🌙 ISLAMIC & BENGALI CALENDAR SYSTEM (UPDATED)
 ========================================================= */
 
 // ইংরেজি সংখ্যাকে বাংলা সংখ্যায় রূপান্তর
@@ -8,7 +8,42 @@ function toBnNum(n) {
   return n.toString().replace(/\d/g, d => bn[d]);
 }
 
-// বাংলা মাসের হিসাব ক্যালকুলেটর (পশ্চিমবঙ্গ ও বাংলাদেশ স্ট্যান্ডার্ড)
+// হিজরি ১২টি মাসের বিশুদ্ধ বাংলা নাম
+const hijriMonthsBn = [
+  "মুহাররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি",
+  "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান",
+  "রমজান", "শাওয়াল", "জিলকদ", "জিলহজ"
+];
+
+// হিজরী তারিখ কনভার্টার
+function getHijriData(date) {
+  try {
+    const fmt = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric'
+    });
+    
+    const parts = fmt.formatToParts(date);
+    let hDay = 1, hMonth = 1, hYear = 1448;
+
+    parts.forEach(p => {
+      if (p.type === 'day') hDay = parseInt(p.value, 10);
+      if (p.type === 'month') hMonth = parseInt(p.value, 10);
+      if (p.type === 'year') hYear = parseInt(p.value.replace(/[^0-9]/g, ''), 10);
+    });
+
+    return {
+      day: toBnNum(hDay),
+      monthName: hijriMonthsBn[hMonth - 1] || "রবিউল আউয়াল",
+      year: toBnNum(hYear)
+    };
+  } catch (e) {
+    return { day: "৩", monthName: "রবিউল আউয়াল", year: "১৪৪৮" };
+  }
+}
+
+// বাংলা মাসের হিসাব
 function getBengaliDate(date) {
   const banglaMonths = [
     "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন",
@@ -16,10 +51,9 @@ function getBengaliDate(date) {
   ];
   
   const d = date.getDate();
-  const m = date.getMonth(); // 0 - 11
+  const m = date.getMonth();
   const y = date.getFullYear();
 
-  // বাংলা পঞ্জিকা সমন্বয়
   let bDay, bMonthIndex, bYear;
   bYear = (m < 3 || (m === 3 && d < 14)) ? y - 594 : y - 593;
 
@@ -38,27 +72,11 @@ function getBengaliDate(date) {
   return `${toBnNum(bDay)} ${banglaMonths[bMonthIndex]}, ${toBnNum(bYear)}`;
 }
 
-// হিজরী ক্যালেন্ডার ম্যানেজার
 let viewDate = new Date();
 
 function initIslamicCalendar() {
   const today = new Date();
-  
-  // ১. ইন্টেলিজেন্ট হিজরী ফরম্যাটার (Intl API)
-  const hijriFormatter = new Intl.DateTimeFormat('bn-u-ca-islamic-umalqura', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  });
-
-  const hijriParts = hijriFormatter.formatToParts(today);
-  let hDay = '', hMonth = '', hYear = '';
-
-  hijriParts.forEach(p => {
-    if (p.type === 'day') hDay = p.value;
-    if (p.type === 'month') hMonth = p.value;
-    if (p.type === 'year') hYear = p.value;
-  });
+  const hijri = getHijriData(today);
 
   // মিনি কার্ডে ডাটা বসানো
   const elHDay = document.getElementById('hijriDay');
@@ -67,9 +85,9 @@ function initIslamicCalendar() {
   const elGreg = document.getElementById('gregorianDate');
   const elBen = document.getElementById('bengaliDate');
 
-  if (elHDay) elHDay.innerText = hDay;
-  if (elHMonth) elHMonth.innerText = hMonth;
-  if (elHYear) elHYear.innerText = `${hYear} হিজরি`;
+  if (elHDay) elHDay.innerText = hijri.day;
+  if (elHMonth) elHMonth.innerText = hijri.monthName;
+  if (elHYear) elHYear.innerText = `${hijri.year} হিজরি`;
 
   // ইংরেজি ও বাংলা তারিখ
   const engMonthsBn = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
@@ -80,7 +98,6 @@ function initIslamicCalendar() {
     elBen.innerText = getBengaliDate(today);
   }
 
-  // ২. মডাল ক্যালেন্ডার লজিক
   setupModalEvents();
 }
 
@@ -99,14 +116,14 @@ function renderMonthGrid(targetDate) {
   const totalDays = new Date(y, m + 1, 0).getDate();
   const today = new Date();
 
-  // ইন্টেল ফরম্যাটার দিয়ে হিজরী মাস নাম
-  const hijriMonthFmt = new Intl.DateTimeFormat('bn-u-ca-islamic-umalqura', { month: 'long', year: 'numeric' });
+  // মাসের মাঝামাঝি তারিখ ধরে হিজরী মাস বের করা
+  const midDateHijri = getHijriData(new Date(y, m, 15));
   const engMonthsBn = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
   
-  modalTitle.innerText = hijriMonthFmt.format(new Date(y, m, 15));
-  modalSubTitle.innerText = `${engMonthsBn[m]} ${toBnNum(y)}`;
+  if (modalTitle) modalTitle.innerText = `${midDateHijri.monthName} ${midDateHijri.year} হিজরি`;
+  if (modalSubTitle) modalSubTitle.innerText = `${engMonthsBn[m]} ${toBnNum(y)}`;
 
-  // ফাঁকা সেল (মাসের শুরুর দিন অনুযায়ী)
+  // ফাঁকা সেল
   for (let i = 0; i < firstDayIndex; i++) {
     const emptyCell = document.createElement('div');
     emptyCell.className = 'cal-cell empty';
@@ -119,9 +136,7 @@ function renderMonthGrid(targetDate) {
     const cell = document.createElement('div');
     cell.className = 'cal-cell';
 
-    // হিজরী তারিখ বের করা
-    const hDayFmt = new Intl.DateTimeFormat('bn-u-ca-islamic-umalqura', { day: 'numeric' });
-    const hDayVal = hDayFmt.format(cellDate);
+    const cellHijri = getHijriData(cellDate);
 
     if (
       cellDate.getDate() === today.getDate() &&
@@ -132,7 +147,7 @@ function renderMonthGrid(targetDate) {
     }
 
     cell.innerHTML = `
-      <span>${hDayVal}</span>
+      <span>${cellHijri.day}</span>
       <span class="eng-sub">${toBnNum(day)}</span>
     `;
 
@@ -149,31 +164,31 @@ function setupModalEvents() {
 
   if (!cardBtn || !modal) return;
 
-  // ওপেন মডাল
   cardBtn.addEventListener('click', () => {
     viewDate = new Date();
     renderMonthGrid(viewDate);
     modal.classList.add('active');
   });
 
-  // ক্লোজ মডাল
-  closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+  if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('active'));
   modal.addEventListener('click', (e) => {
     if (e.target === modal) modal.classList.remove('active');
   });
 
-  // নেভিগেশন (আগের ও পরের মাস)
-  prevBtn.addEventListener('click', () => {
-    viewDate.setMonth(viewDate.getMonth() - 1);
-    renderMonthGrid(viewDate);
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      viewDate.setMonth(viewDate.getMonth() - 1);
+      renderMonthGrid(viewDate);
+    });
+  }
 
-  nextBtn.addEventListener('click', () => {
-    viewDate.setMonth(viewDate.getMonth() + 1);
-    renderMonthGrid(viewDate);
-  });
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      viewDate.setMonth(viewDate.getMonth() + 1);
+      renderMonthGrid(viewDate);
+    });
+  }
 }
 
-// DOM লোড হলে চালু করুন
+// লোড কল
 document.addEventListener('DOMContentLoaded', initIslamicCalendar);
-                            
