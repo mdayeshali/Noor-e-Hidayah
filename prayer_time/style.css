@@ -208,7 +208,7 @@ body {
 }
 
 /* -------------------------------------------------------
-   6) FULL PRAYER SCHEDULE TABLE / GRID
+   6) FULL PRAYER SCHEDULE TABLE (CLEAN & MODERN)
 --------------------------------------------------------- */
 .full-schedule-card {
   grid-column: 1 / -1; /* নিচে পুরো জায়গা জুড়ে থাকবে */
@@ -221,49 +221,74 @@ body {
   margin-bottom: 16px;
 }
 
-/* JS দিয়ে জেনারেট হওয়া প্রেয়ার লিস্ট গ্রিড */
-.prayer-times-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 12px;
+.prayer-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 5px;
 }
 
-.prayer-time-item {
-  background: var(--highlight-bg);
-  border: 1px solid var(--border-color);
+.prayer-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
   border-radius: 12px;
-  padding: 12px 10px;
-  text-align: center;
-  transition: transform 0.2s ease, background 0.3s ease;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  font-size: 0.98rem;
 }
 
-.prayer-time-item:hover {
-  transform: translateY(-2px);
+.prayer-table th,
+.prayer-table td {
+  padding: 12px 16px;
+  text-align: left;
 }
 
-.prayer-time-item .name {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.prayer-time-item .time {
-  font-size: 1.15rem;
-  font-weight: 800;
+.prayer-table th {
+  background: var(--highlight-bg);
   color: var(--primary);
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
 }
 
-/* বর্তমানে চলমান ওয়াক্তের হাইলাইট */
-.prayer-time-item.active {
-  background: var(--active-prayer-bg);
-  border-color: var(--active-prayer-bg);
-  box-shadow: 0 4px 12px var(--shadow-hover);
+.prayer-table td {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text);
+  transition: background 0.2s ease;
 }
 
-.prayer-time-item.active .name,
-.prayer-time-item.active .time {
-  color: var(--active-prayer-text);
+.prayer-table tr:last-child td {
+  border-bottom: none;
+}
+
+.prayer-table tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+[data-theme="dark"] .prayer-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.prayer-table td.time-col {
+  text-align: right;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+/* 🌟 অ্যাক্টিভ নামাজের রো হাইলাইট */
+.prayer-table tr.active td {
+  background: var(--active-prayer-bg) !important;
+  color: var(--active-prayer-text) !important;
+  font-weight: 700;
+}
+
+.prayer-table tr.active td.time-col {
+  color: #ffeb3b !important; /* হালকা হলুদ রঙে উজ্জ্বল সময় */
+}
+
+[data-theme="dark"] .prayer-table tr.active td.time-col {
+  color: #121514 !important; /* ডার্ক থিমে ব্রাইট ব্যাকগ্রাউন্ডে ক্লিয়ার টেক্সট */
 }
 
 .loading-state {
@@ -306,19 +331,16 @@ body {
   }
 
   .full-schedule-card {
-    padding: 18px 14px;
+    padding: 16px 12px;
   }
 
-  .prayer-times-grid {
-    grid-template-columns: repeat(2, 1fr); /* মোবাইলে পাশাপাশি ২ কলাম */
-    gap: 10px;
+  .prayer-table th,
+  .prayer-table td {
+    padding: 10px 12px;
+    font-size: 0.92rem;
   }
 
-  .prayer-time-item {
-    padding: 10px 8px;
+  .prayer-table td.time-col {
+    font-size: 0.98rem;
   }
-
-  .prayer-time-item .time {
-    font-size: 1.05rem;
-  }
-  }
+}
