@@ -10,7 +10,7 @@ function toBnNum(str) {
   return str.toString().replace(/\d/g, d => bn[d]);
 }
 
-// ২৪ ঘণ্টার সময় ফরম্যাটকে ১২ ঘণ্টার বাংলা ফরম্যাটে রূপান্তর
+// ২৪ ঘণ্টার সময়কে ১২ ঘণ্টার বাংলা ফরম্যাটে রূপান্তর
 function format12Hour(time24) {
   if (!time24) return '--:--';
   const cleanTime = time24.split(' ')[0]; // (e.g. "05:12 (IST)" -> "05:12")
@@ -27,8 +27,8 @@ function format12Hour(time24) {
 let prayerTimesToday = null;
 let countdownInterval = null;
 
-// ডিফল্ট অবস্থান (লোকেশন পারমিশন না দিলে ব্যবহার হবে)
-const DEFAULT_LAT = 24.8949; // Sultanganj / Malda Region default
+// ডিফল্ট অবস্থান (পারমিশন বন্ধ থাকলে স্বয়ংক্রিয় ব্যাকআপ)
+const DEFAULT_LAT = 24.8949;
 const DEFAULT_LNG = 87.9710;
 const DEFAULT_CITY = "মালদা / পশ্চিমবঙ্গ";
 
@@ -36,7 +36,6 @@ const DEFAULT_CITY = "মালদা / পশ্চিমবঙ্গ";
    ১. প্রধান ইনিশিয়ালাইজেশন
 --------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-  // মাযহাব লোড (হানাফি ডিফল্ট = 1, শাফি = 0)
   const savedMadhab = localStorage.getItem('islamicMadhab') || "1";
   const madhabSelect = document.getElementById('madhabSelect');
   if (madhabSelect) madhabSelect.value = savedMadhab;
@@ -50,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function initPrayerLocation() {
   const locEl = document.getElementById('locationText');
 
-  // ক্যাশ করা লোকেশন চেক
   const cachedLat = localStorage.getItem('userLat');
   const cachedLng = localStorage.getItem('userLng');
   const cachedCity = localStorage.getItem('userCity');
@@ -69,7 +67,6 @@ function initPrayerLocation() {
         localStorage.setItem('userLat', lat);
         localStorage.setItem('userLng', lng);
         
-        // রিভার্স জিওকোডিং (শহরের নাম বের করা)
         getCityName(lat, lng);
         fetchPrayerTimes(lat, lng);
       },
@@ -78,7 +75,7 @@ function initPrayerLocation() {
         if (locEl) locEl.innerText = DEFAULT_CITY;
         fetchPrayerTimes(DEFAULT_LAT, DEFAULT_LNG);
       },
-      { timeout: 8000, enableHighAccuracy: false } // ফাস্ট রেসপন্সের জন্য
+      { timeout: 8000, enableHighAccuracy: false }
     );
   } else {
     if (locEl) locEl.innerText = DEFAULT_CITY;
@@ -86,7 +83,7 @@ function initPrayerLocation() {
   }
 }
 
-// শহরের নাম বের করার দ্রুত ফাংশন
+// শহরের নাম বের করা (Reverse Geocoding)
 async function getCityName(lat, lng) {
   const locEl = document.getElementById('locationText');
   try {
@@ -101,22 +98,21 @@ async function getCityName(lat, lng) {
 }
 
 /* -------------------------------------------------------
-   ৩. নামাজের সময় ফেচিং (Aladhan High Speed API)
+   ৩. নামাজের সময় ফেচিং (Fast Local Cache + Aladhan API)
 --------------------------------------------------------- */
 async function fetchPrayerTimes(lat, lng) {
   const madhab = localStorage.getItem('islamicMadhab') || "1";
   const today = new Date();
   const dateStr = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
-  const cacheKey = `prayer_${dateStr}_${madhab}_${lat.toFixed(2)}_${lng.toFixed(2)}`;
+  const cacheKey = `prayer_${dateStr}_${madhab}_${parseFloat(lat).toFixed(2)}_${parseFloat(lng).toFixed(2)}`;
 
-  // ১. লোকাল ক্যাশ থেকে ইনস্ট্যান্ট লোড (Super Fast)
+  // লোকাল স্টোরেজ থেকে তাৎক্ষণিক লোড
   const cachedData = localStorage.getItem(cacheKey);
   if (cachedData) {
     renderTimes(JSON.parse(cachedData));
     return;
   }
 
-  // ২. API কল (Method 1 = Karachi/Subcontinent Standard, School 1 = Hanafi, 0 = Shafi)
   const apiUrl = `https://api.aladhan.com/v1/timings/${Math.floor(Date.now() / 1000)}?latitude=${lat}&longitude=${lng}&method=1&school=${madhab}`;
 
   try {
@@ -133,12 +129,12 @@ async function fetchPrayerTimes(lat, lng) {
   } catch (error) {
     console.error("Prayer time fetch failed:", error);
     const listEl = document.getElementById('prayerList');
-    if (listEl) listEl.innerHTML = `<p style="color:red; text-align:center;">নামাজের সময় লোড করা যায়নি। ইন্টারনেট সংযোগ চেক করুন।</p>`;
+    if (listEl) listEl.innerHTML = `<p style="color:red; text-align:center; padding:15px;">নামাজের সময় লোড করা যায়নি। ইন্টারনেট সংযোগ চেক করুন।</p>`;
   }
 }
 
 /* -------------------------------------------------------
-   ৪. DOM-এ নামাজের ওয়াক্ত রেন্ডার করা
+   ৪. DOM-এ নামাজের ওয়াক্ত টেবিল আকারে রেন্ডার করা
 --------------------------------------------------------- */
 function renderTimes(timings) {
   prayerTimesToday = timings;
@@ -148,35 +144,50 @@ function renderTimes(timings) {
     { key: "Sunrise", name: "সূর্যোদয় (সাহরি শেষ)", icon: "🌄" },
     { key: "Dhuhr", name: "যোহর", icon: "☀️" },
     { key: "Asr", name: "আসর", icon: "🌇" },
-    { key: "Sunset", name: "সূর্যাস্ত (ইফতার)", icon: "🌇" },
+    { key: "Sunset", name: "সূর্যাস্ত (ইফতার)", icon: "🌆" },
     { key: "Maghrib", name: "মাগরিব", icon: "🌙" },
     { key: "Isha", name: "ইশা", icon: "🌌" }
   ];
 
   const listEl = document.getElementById('prayerList');
   if (listEl) {
-    listEl.innerHTML = '';
-    
+    let tableHTML = `
+      <div class="prayer-table-wrapper">
+        <table class="prayer-table">
+          <thead>
+            <tr>
+              <th>ওয়াক্ত / বিবরণ</th>
+              <th style="text-align: right;">সময়সূচী</th>
+            </tr>
+          </thead>
+          <tbody>
+    `;
+
     prayerSchedule.forEach(item => {
       const timeFormatted = format12Hour(timings[item.key]);
-      const card = document.createElement('div');
-      card.className = 'prayer-time-item';
-      card.id = `prayer-item-${item.key.toLowerCase()}`;
-      
-      card.innerHTML = `
-        <div class="name">${item.icon} ${item.name}</div>
-        <div class="time">${timeFormatted}</div>
+      tableHTML += `
+        <tr id="prayer-item-${item.key.toLowerCase()}">
+          <td>${item.icon} ${item.name}</td>
+          <td class="time-col">${timeFormatted}</td>
+        </tr>
       `;
-      listEl.appendChild(card);
     });
+
+    tableHTML += `
+          </tbody>
+        </table>
+      </div>
+    `;
+
+    listEl.innerHTML = tableHTML;
   }
 
-  // লাইভ কাউন্টডাউন শুরু
+  // লাইভ কাউন্টডাউন ও রো হাইলাইটার চালু
   startLivePrayerTracker();
 }
 
 /* -------------------------------------------------------
-   ৫. লাইভ কাউন্টডাউন ও ওয়াক্ত হাইলাইটার
+   ৫. লাইভ কাউন্টডাউন ও টেবিল রো হাইলাইটার
 --------------------------------------------------------- */
 function startLivePrayerTracker() {
   if (countdownInterval) clearInterval(countdownInterval);
@@ -186,7 +197,6 @@ function startLivePrayerTracker() {
 
     const now = new Date();
     
-    // ওয়াক্তগুলোর সঠিক Date অবজেক্ট তৈরি
     const prayerOrder = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
     const prayerNamesBn = {
       Fajr: "ফজর",
@@ -215,7 +225,7 @@ function startLivePrayerTracker() {
       }
     }
 
-    // যদি রাতের সময় হয় (ইশার পর) তবে পরবর্তী ওয়াক্ত আগামীকালের ফজর
+    // রাতের বেলা (ইশার পর) পরবর্তী ওয়াক্ত আগামীকালের ফজর
     if (!nextWaqtTime) {
       nextWaqt = "Fajr";
       currentWaqt = "ইশা";
@@ -225,7 +235,7 @@ function startLivePrayerTracker() {
       nextWaqtTime.setHours(h, m, 0, 0);
     }
 
-    // DOM আপডেট
+    // DOM টেক্সট আপডেট
     const curEl = document.getElementById('currentPrayer');
     const nextEl = document.getElementById('nextPrayer');
     const countEl = document.getElementById('countdown');
@@ -233,7 +243,7 @@ function startLivePrayerTracker() {
     if (curEl) curEl.innerHTML = `বর্তমান ওয়াক্ত: <strong style="color:var(--primary);">${currentWaqt}</strong>`;
     if (nextEl) nextEl.innerHTML = `পরবর্তী নামাজ: <strong>${prayerNamesBn[nextWaqt]}</strong> (${format12Hour(prayerTimesToday[nextWaqt])})`;
 
-    // কাউন্টডাউন হিসাব
+    // লাইভ কাউন্টডাউন
     const diffMs = nextWaqtTime - now;
     if (diffMs > 0) {
       const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
@@ -247,10 +257,10 @@ function startLivePrayerTracker() {
       if (countEl) countEl.innerText = `- ${hStr}${mStr}${sStr}`;
     }
 
-    // অ্যাক্টিভ ওয়াক্ত কার্ড হাইলাইট
-    document.querySelectorAll('.prayer-time-item').forEach(el => el.classList.remove('active'));
-    const activeCard = document.getElementById(`prayer-item-${nextWaqt.toLowerCase()}`);
-    if (activeCard) activeCard.classList.add('active');
+    // টেবিলের রো (`<tr>`) হাইলাইট করা
+    document.querySelectorAll('.prayer-table tbody tr').forEach(el => el.classList.remove('active'));
+    const activeRow = document.getElementById(`prayer-item-${nextWaqt.toLowerCase()}`);
+    if (activeRow) activeRow.classList.add('active');
   }
 
   updateTracker();
@@ -267,10 +277,9 @@ function changeMadhab() {
   const selectedValue = madhabSelect.value;
   localStorage.setItem('islamicMadhab', selectedValue);
 
-  // ক্যাশ ক্লিয়ার করে নতুন ডাটা ফেচ
   const lat = parseFloat(localStorage.getItem('userLat')) || DEFAULT_LAT;
   const lng = parseFloat(localStorage.getItem('userLng')) || DEFAULT_LNG;
   
   fetchPrayerTimes(lat, lng);
-                                }
-      
+  }
+         
