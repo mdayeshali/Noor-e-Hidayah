@@ -1,0 +1,324 @@
+/* =======================================================
+   🕌 Islamic Light — Prayer Times (pt.html) Styles
+   Author: Md Ayesh Ali | IslamicLight.in
+========================================================= */
+
+/* -------------------------------------------------------
+   1) BASE VARIABLES & THEME SYSTEM
+--------------------------------------------------------- */
+:root {
+  /* Light Theme */
+  --bg: #f7fafc;
+  --text: #222222;
+  --text-muted: #555555;
+  --primary: #004d40;
+  --accent: #00796b;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --shadow-hover: rgba(0, 0, 0, 0.16);
+  --highlight-bg: rgba(0, 77, 64, 0.06);
+  --badge-bg: #e0f2f1;
+  --badge-text: #004d40;
+  --active-prayer-bg: #004d40;
+  --active-prayer-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --bg: #121514;
+  --text: #e2e8f0;
+  --text-muted: #a0aec0;
+  --primary: #4db6ac;
+  --accent: #26a69a;
+  --card-bg: #1a201e;
+  --border-color: #2d3748;
+  --shadow: rgba(0, 0, 0, 0.35);
+  --shadow-hover: rgba(0, 0, 0, 0.55);
+  --highlight-bg: rgba(77, 182, 172, 0.08);
+  --badge-bg: #213f3b;
+  --badge-text: #80cbc4;
+  --active-prayer-bg: #4db6ac;
+  --active-prayer-text: #121514;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans Bengali", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* -------------------------------------------------------
+   2) HERO SECTION
+--------------------------------------------------------- */
+.hero {
+  background: linear-gradient(135deg, rgba(0, 77, 64, 0.08), rgba(0, 150, 136, 0.15));
+  padding: 35px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* -------------------------------------------------------
+   3) GRID CONTAINER & CARDS
+--------------------------------------------------------- */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 22px 18px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px var(--shadow-hover);
+}
+
+.card.center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.2rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Badge (Next Prayer Card) */
+.card-badge {
+  position: absolute;
+  top: -10px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--accent);
+}
+
+/* -------------------------------------------------------
+   4) NEXT PRAYER & COUNTDOWN DISPLAY
+--------------------------------------------------------- */
+.prayer-status-box {
+  width: 100%;
+}
+
+.status-current {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 4px 0;
+}
+
+.status-next {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 4px 0;
+}
+
+.status-countdown {
+  margin-top: 10px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--highlight-bg);
+  padding: 6px 14px;
+  border-radius: 8px;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+/* -------------------------------------------------------
+   5) LOCATION & MADHAB CONTROLS
+--------------------------------------------------------- */
+.location-display {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 5px 0 0 0;
+  padding: 8px 12px;
+  background: var(--highlight-bg);
+  border-radius: 8px;
+  width: 90%;
+  word-break: break-word;
+}
+
+.custom-select-wrapper {
+  width: 100%;
+  max-width: 220px;
+  margin-top: 5px;
+}
+
+.custom-select-wrapper select {
+  width: 100%;
+  padding: 9px 14px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  background-color: var(--card-bg);
+  border: 1.5px solid var(--accent);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-select-wrapper select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.2);
+}
+
+/* -------------------------------------------------------
+   6) FULL PRAYER SCHEDULE TABLE / GRID
+--------------------------------------------------------- */
+.full-schedule-card {
+  grid-column: 1 / -1; /* নিচে পুরো জায়গা জুড়ে থাকবে */
+  padding: 24px;
+}
+
+.full-schedule-card h3 {
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+/* JS দিয়ে জেনারেট হওয়া প্রেয়ার লিস্ট গ্রিড */
+.prayer-times-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.prayer-time-item {
+  background: var(--highlight-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 10px;
+  text-align: center;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.prayer-time-item:hover {
+  transform: translateY(-2px);
+}
+
+.prayer-time-item .name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.prayer-time-item .time {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* বর্তমানে চলমান ওয়াক্তের হাইলাইট */
+.prayer-time-item.active {
+  background: var(--active-prayer-bg);
+  border-color: var(--active-prayer-bg);
+  box-shadow: 0 4px 12px var(--shadow-hover);
+}
+
+.prayer-time-item.active .name,
+.prayer-time-item.active .time {
+  color: var(--active-prayer-text);
+}
+
+.loading-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  padding: 20px 0;
+}
+
+/* -------------------------------------------------------
+   7) RESPONSIVE DESIGN (TABLET & MOBILE)
+--------------------------------------------------------- */
+@media (max-width: 860px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .next-prayer-card {
+    grid-column: 1 / -1; /* ট্যাবলেটে স্ট্যাটাস কার্ড ফুল উইডথ */
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 25px 15px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr; /* মোবাইলে সব কার্ড নিচে নিচে */
+    padding: 0 15px 30px 15px;
+    gap: 15px;
+  }
+
+  .full-schedule-card {
+    padding: 18px 14px;
+  }
+
+  .prayer-times-grid {
+    grid-template-columns: repeat(2, 1fr); /* মোবাইলে পাশাপাশি ২ কলাম */
+    gap: 10px;
+  }
+
+  .prayer-time-item {
+    padding: 10px 8px;
+  }
+
+  .prayer-time-item .time {
+    font-size: 1.05rem;
+  }
+  }
